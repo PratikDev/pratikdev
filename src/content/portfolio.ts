@@ -1,5 +1,8 @@
+import resumeMarkdownUrl from "@/assets/pratik-resume.md?url";
+import resumePdfUrl from "@/assets/pratik-resume.pdf?url";
+
 export type NavItem = {
-	id: "about" | "experience" | "projects" | "contact";
+	id: "about" | "experience" | "projects" | "resume" | "contact";
 	frontendLabel: string;
 	backendLabel: string;
 };
@@ -49,6 +52,15 @@ export type ContactLink = {
 	display: string;
 };
 
+export type ResumeItem = {
+	key: "pdf" | "markdown";
+	label: string;
+	format: "PDF" | "Markdown";
+	href: string;
+	fileName: string;
+	description: string;
+};
+
 export const navItems: NavItem[] = [
 	{ id: "about", frontendLabel: "About", backendLabel: "GET /about" },
 	{
@@ -57,6 +69,7 @@ export const navItems: NavItem[] = [
 		backendLabel: "GET /experience",
 	},
 	{ id: "projects", frontendLabel: "Projects", backendLabel: "GET /projects" },
+	{ id: "resume", frontendLabel: "Resume", backendLabel: "GET /resume" },
 	{ id: "contact", frontendLabel: "Contact", backendLabel: "POST /contact" },
 ];
 
@@ -279,5 +292,24 @@ export const contactLinks: ContactLink[] = [
 		label: "X",
 		href: "https://x.com/pratik_and_dev",
 		display: "x.com/pratik_and_dev",
+	},
+];
+
+export const resumeItems: ResumeItem[] = [
+	{
+		key: "pdf",
+		label: "Resume PDF",
+		format: "PDF",
+		href: resumePdfUrl,
+		fileName: "pratik-resume.pdf",
+		description: "Polished resume version for recruiters, hiring managers, and quick sharing.",
+	},
+	{
+		key: "markdown",
+		label: "Resume Markdown",
+		format: "Markdown",
+		href: resumeMarkdownUrl,
+		fileName: "pratik-resume.md",
+		description: "Plain-text resume source for terminals, agents, and easy parsing.",
 	},
 ];
