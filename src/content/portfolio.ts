@@ -23,6 +23,7 @@ export type ProjectItem = {
 	stack: string[];
 	maturity: ProjectMaturity;
 	url?: string;
+	source?: string;
 	status: "shipped" | "learning";
 	type: "fullstack" | "frontend" | "backend" | "cli" | "systems";
 };
@@ -153,6 +154,7 @@ export const projectSections: ProjectSection[] = [
 				status: "shipped",
 				type: "fullstack",
 				url: "https://narrative-guard.vercel.app",
+				source: "https://github.com/PratikDev/narrative-guard",
 			},
 			{
 				name: "Roadmap App",
@@ -164,6 +166,7 @@ export const projectSections: ProjectSection[] = [
 				status: "shipped",
 				type: "fullstack",
 				url: "https://bitcode-roadmap-app.vercel.app",
+				source: "https://github.com/pratikDev/roadmap-app"
 			},
 			{
 				name: "Kar Communication",
@@ -192,6 +195,7 @@ export const projectSections: ProjectSection[] = [
 				maturity: "learning",
 				status: "learning",
 				type: "backend",
+				source: "https://github.com/PratikDev/url-shortener-api"
 			},
 			{
 				name: "The Super Tiny Compiler",
@@ -202,6 +206,7 @@ export const projectSections: ProjectSection[] = [
 				maturity: "learning",
 				status: "learning",
 				type: "systems",
+				source: "https://github.com/PratikDev/the-super-tiny-compiler-go"
 			},
 			{
 				name: "URL Scraper",
@@ -212,6 +217,7 @@ export const projectSections: ProjectSection[] = [
 				maturity: "learning",
 				status: "learning",
 				type: "cli",
+				source: "https://github.com/PratikDev/url-scrapper"
 			},
 			{
 				name: "TreeEx",
@@ -222,6 +228,7 @@ export const projectSections: ProjectSection[] = [
 				maturity: "learning",
 				status: "learning",
 				type: "cli",
+				source: "https://github.com/PratikDev/treeEx"
 			},
 		],
 	},

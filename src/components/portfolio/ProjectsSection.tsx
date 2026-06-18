@@ -1,10 +1,10 @@
-import { ExternalLink, Server, Sparkles } from "lucide-react";
+import { ExternalLink, GitBranch, Server, Sparkles } from "lucide-react";
 import type * as React from "react";
 
-import { Button } from "@/components/ui/button";
 import { Section } from "@/components/layout/Section";
-import { projectSections } from "@/content/portfolio";
+import { Button } from "@/components/ui/button";
 import type { ProjectItem } from "@/content/portfolio";
+import { projectSections } from "@/content/portfolio";
 import type { ModeAwareProps } from "@/lib/mode";
 import { Reveal } from "./Reveal";
 
@@ -32,6 +32,9 @@ function JsonLine({
 }
 
 function ProjectJson({ project }: { project: ProjectItem }) {
+	const hasUrl = Boolean(project.url);
+	const hasSource = Boolean(project.source);
+
 	return (
 		<pre className="terminal-block overflow-x-auto">
 			<code>
@@ -55,12 +58,28 @@ function ProjectJson({ project }: { project: ProjectItem }) {
 					<JsonLine label="type">
 						<span className="syntax-value">"{project.type}"</span>
 					</JsonLine>
-					<JsonLine label="status" comma={Boolean(project.url)}>
+					<JsonLine
+						label="status"
+						comma={hasUrl || hasSource}
+					>
 						<span className="syntax-value">"{project.status}"</span>
 					</JsonLine>
 					{project.url ? (
-						<JsonLine label="url" comma={false}>
+						<JsonLine
+							label="url"
+							comma={hasSource}
+						>
 							<span className="syntax-value">"{displayUrl(project.url)}"</span>
+						</JsonLine>
+					) : null}
+					{project.source ? (
+						<JsonLine
+							label="source"
+							comma={false}
+						>
+							<span className="syntax-value">
+								"{displayUrl(project.source)}"
+							</span>
 						</JsonLine>
 					) : null}
 				</div>
@@ -72,7 +91,12 @@ function ProjectJson({ project }: { project: ProjectItem }) {
 
 export function ProjectsSection({ mode }: ModeAwareProps) {
 	return (
-		<Section id="projects" title="Projects" eyebrow="Selected work" mode={mode}>
+		<Section
+			id="projects"
+			title="Projects"
+			eyebrow="Selected work"
+			mode={mode}
+		>
 			<div className="grid gap-12">
 				{projectSections.map((section) => (
 					<div key={section.maturity}>
@@ -80,9 +104,15 @@ export function ProjectsSection({ mode }: ModeAwareProps) {
 							{mode === "frontend" ? (
 								<div className="flex size-9 items-center justify-center rounded-(--site-radius-control) bg-primary text-primary-foreground">
 									{section.maturity === "production" ? (
-										<Sparkles className="size-4" aria-hidden="true" />
+										<Sparkles
+											className="size-4"
+											aria-hidden="true"
+										/>
 									) : (
-										<Server className="size-4" aria-hidden="true" />
+										<Server
+											className="size-4"
+											aria-hidden="true"
+										/>
 									)}
 								</div>
 							) : null}
@@ -97,7 +127,10 @@ export function ProjectsSection({ mode }: ModeAwareProps) {
 						) : null}
 						<div className="grid gap-4 md:grid-cols-2 lg:grid-cols-3">
 							{section.projects.map((project, index) => (
-								<Reveal key={project.slug} delay={index * 70}>
+								<Reveal
+									key={project.slug}
+									delay={index * 70}
+								>
 									{mode === "frontend" ? (
 										<article className="site-card group h-full">
 											<div className="project-visual mb-5">
@@ -112,18 +145,55 @@ export function ProjectsSection({ mode }: ModeAwareProps) {
 												</p>
 												<div className="mt-5 flex flex-wrap gap-2">
 													{project.stack.map((tool) => (
-														<span key={tool} className="skill-pill">
+														<span
+															key={tool}
+															className="skill-pill"
+														>
 															{tool}
 														</span>
 													))}
 												</div>
-												{project.url ? (
-													<Button asChild variant="outline" className="mt-6 rounded-(--site-radius-control)">
-														<a href={project.url} target="_blank" rel="noreferrer">
-															View project
-															<ExternalLink className="size-4" aria-hidden="true" />
-														</a>
-													</Button>
+												{project.url || project.source ? (
+													<div className="mt-6 flex flex-wrap gap-2">
+														{project.url ? (
+															<Button
+																asChild
+																variant="outline"
+																className="rounded-(--site-radius-control)"
+															>
+																<a
+																	href={project.url}
+																	target="_blank"
+																	rel="noreferrer"
+																>
+																	View project
+																	<ExternalLink
+																		className="size-4"
+																		aria-hidden="true"
+																	/>
+																</a>
+															</Button>
+														) : null}
+														{project.source ? (
+															<Button
+																asChild
+																variant="ghost"
+																className="border-border rounded-(--site-radius-control)"
+															>
+																<a
+																	href={project.source}
+																	target="_blank"
+																	rel="noreferrer"
+																>
+																	Source
+																	<GitBranch
+																		className="size-4"
+																		aria-hidden="true"
+																	/>
+																</a>
+															</Button>
+														) : null}
+													</div>
 												) : null}
 											</div>
 										</article>
