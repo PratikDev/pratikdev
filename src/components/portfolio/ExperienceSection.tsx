@@ -30,7 +30,7 @@ export function ExperienceSection({ mode }: ModeAwareProps) {
 							delay={index * 80}
 							className="site-card relative sm:ml-14"
 						>
-							<div className="absolute -left-14 top-6 hidden size-10 items-center justify-center rounded-full border border-border bg-card text-sm font-semibold text-primary shadow-[var(--site-shadow-card)] sm:flex">
+							<div className="absolute -left-14 top-6 hidden size-10 items-center justify-center rounded-full border border-border bg-card text-sm font-semibold text-primary shadow-(--site-shadow-card) sm:flex">
 								{getInitials(item.company)}
 							</div>
 							<div className="flex flex-col gap-4 lg:flex-row lg:items-start lg:justify-between">
@@ -45,7 +45,7 @@ export function ExperienceSection({ mode }: ModeAwareProps) {
 									<p className="mt-1 text-sm font-medium text-muted-foreground">
 										{item.company}
 									</p>
-									<p className="mt-4 max-w-3xl leading-[var(--site-leading)] text-muted-foreground">
+									<p className="mt-4 max-w-3xl leading-(--site-leading) text-muted-foreground">
 										{item.description}
 									</p>
 								</div>

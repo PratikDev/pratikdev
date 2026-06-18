@@ -22,7 +22,7 @@ export function Section({
 	return (
 		<section
 			id={id}
-			className={cn("scroll-mt-28 py-[var(--site-section-padding)]", className)}
+			className={cn("scroll-mt-28 py-(--site-section-padding)", className)}
 			{...props}
 		>
 			<div className="mx-auto w-full max-w-6xl px-4 sm:px-6 lg:px-8">

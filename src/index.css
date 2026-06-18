@@ -222,7 +222,7 @@
 	}
 
 	.nav-link {
-		@apply shrink-0 rounded-[var(--site-radius-control)] px-3 py-1.5 font-medium text-muted-foreground outline-none hover:bg-accent hover:text-accent-foreground focus-visible:ring-2 focus-visible:ring-ring;
+		@apply shrink-0 rounded-(--site-radius-control) px-3 py-1.5 font-medium text-muted-foreground outline-none hover:bg-accent hover:text-accent-foreground focus-visible:ring-2 focus-visible:ring-ring;
 	}
 
 	.site-card {
@@ -269,7 +269,7 @@
 	}
 
 	.skill-pill {
-		@apply inline-flex items-center rounded-[var(--site-radius-control)] border border-border bg-secondary px-3 py-1 text-xs font-medium text-secondary-foreground;
+		@apply inline-flex items-center rounded-(--site-radius-control) border border-border bg-secondary px-3 py-1 text-xs font-medium text-secondary-foreground;
 	}
 
 	[data-mode="backend"] .skill-pill {
@@ -277,7 +277,7 @@
 	}
 
 	.project-visual {
-		@apply flex h-[var(--site-project-visual-height)] items-end overflow-hidden bg-secondary p-4 text-xs font-semibold uppercase tracking-[0.16em] text-secondary-foreground;
+		@apply flex h-(--site-project-visual-height) items-end overflow-hidden bg-secondary p-4 text-xs font-semibold uppercase tracking-[0.16em] text-secondary-foreground;
 		border-radius: calc(var(--site-radius-card) * 0.75);
 		background-image:
 			linear-gradient(135deg, color-mix(in srgb, var(--site-accent), transparent 72%), transparent 54%),
@@ -285,7 +285,7 @@
 	}
 
 	.contact-link {
-		@apply flex items-start gap-3 rounded-[var(--site-radius-card)] border border-border bg-background/70 p-4 text-left hover:border-primary hover:bg-secondary focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring;
+		@apply flex items-start gap-3 rounded-(--site-radius-card) border border-border bg-background/70 p-4 text-left hover:border-primary hover:bg-secondary focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring;
 	}
 
 	.syntax-key {

@@ -78,7 +78,7 @@ export function ProjectsSection({ mode }: ModeAwareProps) {
 					<div key={section.maturity}>
 						<div className="mb-5 flex items-center gap-3">
 							{mode === "frontend" ? (
-								<div className="flex size-9 items-center justify-center rounded-[var(--site-radius-control)] bg-primary text-primary-foreground">
+								<div className="flex size-9 items-center justify-center rounded-(--site-radius-control) bg-primary text-primary-foreground">
 									{section.maturity === "production" ? (
 										<Sparkles className="size-4" aria-hidden="true" />
 									) : (
@@ -107,7 +107,7 @@ export function ProjectsSection({ mode }: ModeAwareProps) {
 												<h4 className="text-lg font-semibold text-card-foreground">
 													{project.name}
 												</h4>
-												<p className="mt-3 flex-1 leading-[var(--site-leading)] text-muted-foreground">
+												<p className="mt-3 flex-1 leading-(--site-leading) text-muted-foreground">
 													{project.description}
 												</p>
 												<div className="mt-5 flex flex-wrap gap-2">
@@ -118,7 +118,7 @@ export function ProjectsSection({ mode }: ModeAwareProps) {
 													))}
 												</div>
 												{project.url ? (
-													<Button asChild variant="outline" className="mt-6 rounded-[var(--site-radius-control)]">
+													<Button asChild variant="outline" className="mt-6 rounded-(--site-radius-control)">
 														<a href={project.url} target="_blank" rel="noreferrer">
 															View project
 															<ExternalLink className="size-4" aria-hidden="true" />

@@ -21,7 +21,7 @@ export function HeroSection({ mode }: ModeAwareProps) {
 							<h1 className="text-4xl font-semibold leading-tight tracking-normal text-foreground sm:text-5xl lg:text-6xl">
 								{heroContent.headline}
 							</h1>
-							<p className="mt-6 max-w-2xl text-lg leading-[var(--site-leading)] text-muted-foreground">
+							<p className="mt-6 max-w-2xl text-lg leading-(--site-leading) text-muted-foreground">
 								{heroContent.subheading}
 							</p>
 						</>
@@ -31,7 +31,7 @@ export function HeroSection({ mode }: ModeAwareProps) {
 						</pre>
 					)}
 					<div className="mt-8 flex flex-wrap items-center gap-4">
-						<Button asChild size="lg" className="rounded-[var(--site-radius-control)]">
+						<Button asChild size="lg" className="rounded-(--site-radius-control)">
 							<a href="#projects">
 								View projects
 								<ArrowRight className="size-4" aria-hidden="true" />
