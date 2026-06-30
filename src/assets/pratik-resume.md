@@ -1,6 +1,6 @@
 # Pratik Dev
 
-Full-Stack Engineer with 4+ years of experience in Web Development, building intuitive user interfaces and enterprise solutions using modern technologies like TypeScript, React, Next.js, and PostgreSQL. Experienced in startup environments, product development, and full-stack engineering. Currently exploring Golang and systems programming.
+Frontend-focused Full-Stack Engineer with 4+ years of experience building production interfaces with React, Next.js, and TypeScript. Comfortable owning features end-to-end — from design handoff to shipped, production-grade UI — with working knowledge of backend systems (Go, PostgreSQL) that makes API integration and full-stack collaboration second nature.
 
 ## Personal Information
 
@@ -107,38 +107,38 @@ Full-Stack Engineer with 4+ years of experience in Web Development, building int
 
 - **Full-Stack Engineer** at **Bilsida** (Oct 2023 - Aug 2024)
 
-  - **Description:** Developed the frontend and backend of web apps and APIs for a Swedish car marketplace startup.
+  - **Description:** Developed the frontend and backend of web apps and APIs for a Swedish car marketplace startup, working directly with founders during the company's pre-investment phase.
   - **Tech Stack:** Next.js, Tailwind CSS, ShadcnUI, TypeScript, Appwrite, Docker
-  - **Impact:** Contributed to building the product from the ground up, supporting the startup's journey from initial development to investor readiness.
+  - **Impact:** Built core product UI and backend integrations from scratch, helping take the product from early development to investor-ready state.
 
 - **Full-Stack Engineer** at **[Hello World Communications](https://software.helloworldbd.com/)** (Sep 2024 - Jul 2025)
 
-  - **Description:** Built and maintained frontend applications, backend services, and APIs for a software development agency.
+  - **Description:** Built and maintained frontend applications, backend services, and APIs across multiple concurrent client projects for a software development agency.
   - **Tech Stack:** Next.js, Tailwind CSS, ShadcnUI, TypeScript, Drizzle ORM, Appwrite, Firebase, Docker
-  - **Impact:** Led engineering efforts across multiple client projects, improving delivery quality and contributing to stronger client satisfaction.
+  - **Impact:** Owned engineering delivery across client projects end-to-end — from architecture decisions to deployment — directly responsible for client-facing UI quality and reliability.
 
 - **Frontend Engineer** at **[Hone](https://hone.gg/)** (Aug 2025 - Sep 2025)
 
   - **Description:** Built and maintained user interfaces for both Web and Desktop applications, focusing on clean UI, performance, and scalable component architecture.
   - **Tech Stack:** ReactJS, Tailwind CSS, ShadcnUI, TypeScript
-  - **Impact:** Enhanced frontend architecture and accessibility while improving developer experience through reusable and scalable UI components.
+  - **Impact:** Built reusable, accessible UI components that improved both developer experience and frontend consistency across the codebase.
 
 - **Full-Stack Engineer** at **[Osilion](https://osilion.no/)** (Oct 2025 - Feb 2026)
 
-  - **Description:** Developed and maintained full-stack features for Osilion's intelligent recruitment platform, contributing to end-to-end product development.
+  - **Description:** Developed and maintained full-stack features for Osilion's intelligent recruitment platform, working closely with the team on technical architecture decisions.
   - **Tech Stack:** Next.js, TypeScript, Azure, PostgreSQL, Tailwind CSS, ShadcnUI
-  - **Impact:** Collaborated on technical architecture decisions and helped choose design patterns for scalable solutions across multiple projects.
+  - **Impact:** Helped define design patterns and component architecture used across multiple product surfaces, balancing speed of delivery with long-term maintainability.
 
 - **Software Engineer** at **[Devspace](https://www.devspace.so/)** (March 2026 - Present)
 
-  - **Description:** Working on AI-powered features at Devspace, helping build and scale web applications while contributing across the entire product lifecycle.
+  - **Description:** Building AI-powered product features, integrating modern agentic AI workflows (Mastra AI, Vercel AI SDK) into a production React/TypeScript application.
   - **Tech Stack:** React, TypeScript, Mastra AI, Convex, OpenCode, Vercel AI SDK, Gemini
-  - **Impact:** Building AI-powered product features by integrating modern AI workflows and contributing to scalable frontend architecture across the product lifecycle.
+  - **Impact:** Contributing to scalable frontend architecture while shipping AI-driven features across the full product lifecycle.
 
 ## Additional Information
 
 - **Languages:** English, Bengali
 - **Hobbies:** Reading, Writing, Coding, Discussions
-- **Interests:** Technology, UI/UX design, Astronomy, Physics, Philosophy, Fashion, Science, Movies, Psychology, History
+- **Interests:** Technology, Astronomy, Physics, Philosophy, Fashion, Science, Movies, Psychology, History
 
 Additional information available upon request.
