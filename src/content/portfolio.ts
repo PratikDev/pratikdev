@@ -233,16 +233,16 @@ export const projectSections: ProjectSection[] = [
 				source: "https://github.com/PratikDev/url-scrapper"
 			},
 			{
-				name: "TreeEx",
-				slug: "treeex",
+				name: "URL Health Checker",
+				slug: "url-health-checker",
 				description:
-					"CLI tool that analyzes directory structure and outputs JSON.",
-				stack: ["Go", "CLI", "JSON"],
-				maturity: "learning",
-				status: "learning",
-				type: "cli",
-				source: "https://github.com/PratikDev/treeEx"
-			},
+					"Async job processing system — submit a URL, a background worker claims it via FOR UPDATE SKIP LOCKED, performs an HTTP health check, and retries with exponential backoff.",
+				stack: ["Go", "PostgreSQL", "pgx/v5", "Docker"],
+				maturity: "production",
+				status: "shipped",
+				type: "backend",
+				source: "https://github.com/PratikDev/url-health-checker"
+			}
 		],
 	},
 ];
