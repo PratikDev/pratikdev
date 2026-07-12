@@ -24,8 +24,8 @@ Frontend-focused Full-Stack Engineer with 4+ years of experience building produc
 - **Languages:** TypeScript, JavaScript, Node.js, Golang
 - **Frameworks:** React.js, Next.js, Express.js
 - **Frontend:** Tailwind CSS, ShadcnUI, Framer Motion, Bootstrap
-- **Databases:** Drizzle ORM, MongoDB, MySQL, SQLite, PostgreSQL
-- **Technologies:** Appwrite, Firebase, Supabase, Convex, Docker, Vercel
+- **Databases:** pgx/v5, Drizzle ORM, PostgreSQL, MongoDB, MySQL, SQLite
+- **Technologies:** Docker, Appwrite, Firebase, Supabase, Convex, Vercel
 - **AI Tools:** Codex, Claude Code, Opencode
 - **Tools:** Git, GitHub, VS Code, Postman, Linear, Figma
 
@@ -75,11 +75,18 @@ Frontend-focused Full-Stack Engineer with 4+ years of experience building produc
 
 ### Backend & System Projects
 
+- **[URL Health Checker](https://github.com/PratikDev/url-health-checker)**
+
+  - **Description:** An async job processing system — submit a URL, a background worker claims it via `SELECT ... FOR UPDATE SKIP LOCKED`, performs an HTTP health check, and retries on failure with exponential backoff. Two binaries (API + worker) from one codebase, sharing a PostgreSQL-backed job queue with no external message broker.
+  - **Tech Stack:** Golang, PostgreSQL, pgx/v5, Docker, golang-migrate, slog
+  - **Challenges:** Designed stale-job recovery directly into the claim query (staleness threshold replacing a heartbeat process), exponential backoff written in SQL to keep retry state atomic with the status update, and graceful worker shutdown via `signal.NotifyContext` so the process never dies mid-database-update.
+  - **Engineering practices:** Separate Dockerfiles per binary; `PerformHealthCheck` unit-tested with `httptest.NewServer` including timeout simulation at 500ms (not the real 10s); integration tests against a real PostgreSQL instance with schema loaded from actual migration files via `//go:embed`.
+
 - **[URL Shortener API](https://github.com/PratikDev/url-shortener-api)** | [Live Demo](https://url-shortener-api-xiyp.onrender.com)
 
   - **Description:** A production-style URL shortener API built with Go and PostgreSQL, with raw SQL (no ORM), versioned migrations, structured logging, and a full unit + integration test suite. Deployed live on Render.
   - **Tech Stack:** Golang, PostgreSQL, pgx/v5, Docker, golang-migrate, slog
-  - **Challenges:** Built a per-IP token bucket rate limiter from scratch using a generic thread-safe map, with the refill/consume logic running inside a single mutex-protected operation to eliminate a read-then-write race condition - verified correct under concurrent load using Go's race detector (`-race`), not just manual testing.
+  - **Challenges:** Built a per-IP token bucket rate limiter from scratch using a generic thread-safe map, with the refill/consume logic running inside a single mutex-protected operation to eliminate a read-then-write race condition — verified correct under concurrent load using Go's race detector (`-race`), not just manual testing.
   - **Engineering practices:** Multi-stage Docker build running as a non-root user; integration tests run against a real PostgreSQL instance (not mocked) with schema loaded directly from the migration files; retry-on-conflict logic for short code generation instead of pre-checking, with collisions correctly classified as server errors rather than client conflicts.
 
 - **[URL Scraper](https://github.com/PratikDev/url-scrapper)**
@@ -92,11 +99,6 @@ Frontend-focused Full-Stack Engineer with 4+ years of experience building produc
 
   - **Description:** A minimal compiler built from scratch using Go, implementing parsing logic and tree-based data structures for representing code structure.
   - **Tech Stack:** Golang, Abstract Syntax Trees (AST), Data Structures
-
-- **[TreeEx](https://github.com/PratikDev/treeex)**
-
-  - **Description:** CLI tool that analyzes directory structure and outputs a JSON tree.
-  - **Tech Stack:** Bun, TypeScript
 
 ## Professional Experience
 
@@ -135,10 +137,6 @@ Frontend-focused Full-Stack Engineer with 4+ years of experience building produc
   - **Tech Stack:** React, TypeScript, Mastra AI, Convex, OpenCode, Vercel AI SDK, Gemini
   - **Impact:** Contributing to scalable frontend architecture while shipping AI-driven features across the full product lifecycle.
 
-## Additional Information
-
-- **Languages:** English, Bengali
-- **Hobbies:** Reading, Writing, Coding, Discussions
-- **Interests:** Technology, Astronomy, Physics, Philosophy, Fashion, Science, Movies, Psychology, History
+---
 
 Additional information available upon request.
