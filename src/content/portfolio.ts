@@ -222,6 +222,28 @@ export const projectSections: ProjectSection[] = [
 				source: "https://github.com/PratikDev/the-super-tiny-compiler-go"
 			},
 			{
+				name: "URL Health Checker",
+				slug: "url-health-checker",
+				description:
+					"Background job queue in Go — URL health checker with worker-based processing, retry logic, and exponential backoff.",
+				stack: ["Go", "PostgreSQL", "pgx/v5", "Docker"],
+				maturity: "production",
+				status: "shipped",
+				type: "backend",
+				source: "https://github.com/PratikDev/url-health-checker"
+			},
+			{
+				name: "Result Lookup",
+				slug: "result-lookup",
+				description:
+					"High-throughput exam result API simulating Bangladesh's SSC like result publishing infrastructure — designed to serve 2M student results at a single fixed moment",
+				stack: ["Go", "PostgreSQL", "Redis", "pgx/v5", "Docker"],
+				maturity: "production",
+				status: "shipped",
+				type: "backend",
+				source: "https://github.com/PratikDev/result-lookup"
+			},
+			{
 				name: "URL Scraper",
 				slug: "url-scraper",
 				description:
@@ -232,17 +254,6 @@ export const projectSections: ProjectSection[] = [
 				type: "cli",
 				source: "https://github.com/PratikDev/url-scrapper"
 			},
-			{
-				name: "URL Health Checker",
-				slug: "url-health-checker",
-				description:
-					"Async job processing system — submit a URL, a background worker claims it via FOR UPDATE SKIP LOCKED, performs an HTTP health check, and retries with exponential backoff.",
-				stack: ["Go", "PostgreSQL", "pgx/v5", "Docker"],
-				maturity: "production",
-				status: "shipped",
-				type: "backend",
-				source: "https://github.com/PratikDev/url-health-checker"
-			}
 		],
 	},
 ];

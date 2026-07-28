@@ -6,7 +6,7 @@ Frontend-focused Full-Stack Engineer with 4+ years of experience building produc
 
 - **Email:** pratikdevofficial1@gmail.com
 - **Phone:** +880-1537220785
-- **Socials:** [GitHub](https://github.com/PratikDev), [~~Twitter~~ X](https://x.com/pratik_and_dev), [LinkedIn](https://www.linkedin.com/in/pratik-and-dev/)
+- **Socials:** [GitHub](https://github.com/PratikDev), [~~Twitter~~ X](https://x.com/pratik_and_dev), [LinkedIn](https://www.linkedin.com/in/pratik-and-dev/), [Portfolio](https://iam-pratik.vercel.app/)
 - **Address:** Chattogram, Bangladesh
 
 ## Education
@@ -75,6 +75,13 @@ Frontend-focused Full-Stack Engineer with 4+ years of experience building produc
 
 ### Backend & System Projects
 
+- **[URL Shortener API](https://github.com/PratikDev/url-shortener-api)** | [Live Demo](https://url-shortener-api-xiyp.onrender.com)
+
+  - **Description:** A production-style URL shortener API built with Go and PostgreSQL, with raw SQL (no ORM), versioned migrations, structured logging, and a full unit + integration test suite. Deployed live on Render.
+  - **Tech Stack:** Golang, PostgreSQL, pgx/v5, Docker, golang-migrate, slog
+  - **Challenges:** Built a per-IP token bucket rate limiter from scratch using a generic thread-safe map, with the refill/consume logic running inside a single mutex-protected operation to eliminate a read-then-write race condition — verified correct under concurrent load using Go's race detector (`-race`), not just manual testing.
+  - **Engineering practices:** Multi-stage Docker build running as a non-root user; integration tests run against a real PostgreSQL instance (not mocked) with schema loaded directly from the migration files; retry-on-conflict logic for short code generation instead of pre-checking, with collisions correctly classified as server errors rather than client conflicts.
+
 - **[URL Health Checker](https://github.com/PratikDev/url-health-checker)**
 
   - **Description:** An async job processing system — submit a URL, a background worker claims it via `SELECT ... FOR UPDATE SKIP LOCKED`, performs an HTTP health check, and retries on failure with exponential backoff. Two binaries (API + worker) from one codebase, sharing a PostgreSQL-backed job queue with no external message broker.
@@ -82,12 +89,12 @@ Frontend-focused Full-Stack Engineer with 4+ years of experience building produc
   - **Challenges:** Designed stale-job recovery directly into the claim query (staleness threshold replacing a heartbeat process), exponential backoff written in SQL to keep retry state atomic with the status update, and graceful worker shutdown via `signal.NotifyContext` so the process never dies mid-database-update.
   - **Engineering practices:** Separate Dockerfiles per binary; `PerformHealthCheck` unit-tested with `httptest.NewServer` including timeout simulation at 500ms (not the real 10s); integration tests against a real PostgreSQL instance with schema loaded from actual migration files via `//go:embed`.
 
-- **[URL Shortener API](https://github.com/PratikDev/url-shortener-api)** | [Live Demo](https://url-shortener-api-xiyp.onrender.com)
+- **[Result Lookup](https://github.com/PratikDev/result-lookup)**
 
-  - **Description:** A production-style URL shortener API built with Go and PostgreSQL, with raw SQL (no ORM), versioned migrations, structured logging, and a full unit + integration test suite. Deployed live on Render.
-  - **Tech Stack:** Golang, PostgreSQL, pgx/v5, Docker, golang-migrate, slog
-  - **Challenges:** Built a per-IP token bucket rate limiter from scratch using a generic thread-safe map, with the refill/consume logic running inside a single mutex-protected operation to eliminate a read-then-write race condition — verified correct under concurrent load using Go's race detector (`-race`), not just manual testing.
-  - **Engineering practices:** Multi-stage Docker build running as a non-root user; integration tests run against a real PostgreSQL instance (not mocked) with schema loaded directly from the migration files; retry-on-conflict logic for short code generation instead of pre-checking, with collisions correctly classified as server errors rather than client conflicts.
+  - **Description:** High-throughput exam result API simulating Bangladesh's SSC result publishing infrastructure — designed to serve 2M student results at a single fixed publish moment under sustained peak load. Precomputes all results into Redis before T0 as pre-serialized JSON, uses a publish gate flag for atomic release, and falls back to Postgres under Redis failure with connection limiting to prevent cascade failure.
+  - **Tech Stack:** Golang, PostgreSQL, Redis, pgx/v5, Docker, golang-migrate, slog
+  - **Challenges:** Cursor-based batch seeding (50k rows/batch) with count verification before gate flip; Redis key design for O(1) exact-match lookup with zero JSON marshaling on the hot path; Postgres fallback with `MaxConns` capping to protect the database under Redis failure.
+  - **Engineering practices:** Load tested with `hey` — 31,910 RPS peak on a single instance, zero errors across 615,000 total requests; handler tests use `miniredis` for real Redis behavior without a live instance; two-binary architecture (API + precompute job) sharing internal packages.
 
 - **[URL Scraper](https://github.com/PratikDev/url-scrapper)**
 
