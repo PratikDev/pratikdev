@@ -17,14 +17,13 @@ export type ExperienceItem = {
 	stack: string[];
 };
 
-export type ProjectMaturity = "production" | "learning";
+export type ProjectType = "backend" | "fullstack";
 
 export type ProjectItem = {
 	name: string;
 	slug: string;
 	description: string;
 	stack: string[];
-	maturity: ProjectMaturity;
 	url?: string;
 	source?: string;
 	status: "shipped" | "learning";
@@ -33,15 +32,13 @@ export type ProjectItem = {
 
 export type ProjectSection = {
 	title: string;
-	note?: string;
-	maturity: ProjectMaturity;
+	type: ProjectType;
 	projects: ProjectItem[];
 };
 
 export type SkillGroup = {
 	label: string;
-	key: "primary" | "backend" | "ai_agents";
-	description: string;
+	key: "primary" | "frontend" | "backend" | "ai_agents";
 	skills: string[];
 };
 
@@ -75,18 +72,18 @@ export const navItems: NavItem[] = [
 
 export const heroContent = {
 	headline:
-		"Frontend engineer with 4+ years shipping production UIs - currently going deep on Go and backend systems.",
+		"Backend engineer building Golang systems - 4+ years of fullstack experience across React, Next.js, and TS.",
 	subheading:
-		"I build polished interfaces for a living. Right now I'm spending my nights and weekends learning what happens below the API layer.",
+		"I build backend systems in Go and ship production interfaces in React — currently focused on the backend side.",
 	logLine:
-		'[2026-06-18T10:42:01Z] INFO role="frontend_engineer" status="open_to_work" focus="backend_transition"',
+		`[${new Date().toISOString()}] INFO role="backend_engineer" status="open_to_work" focus="golang"`,
 };
 
 export const currentlyContent = {
 	prose:
-		"Currently deepening my Go and backend systems knowledge - recently rebuilt a production-style URL shortener API from scratch (structured logging, connection pooling, Docker, schema migrations) and worked through distributed systems fundamentals (load balancing, message queues, BGP routing).",
+		"Deepening Go and backend systems knowledge — recently built a production-style URL shortener API, async job queue system, and a high-throughput Redis-backed result lookup API load tested at 31k+ RPS.",
 	logLine:
-		'[2026-06-18T10:42:01Z] INFO currently="deepening_go_backend_systems" recent="url_shortener_api" topics=["structured_logging","pgxpool","docker","migrations","load_balancing","queues","bgp"]',
+		`[${new Date().toISOString()}] INFO currently="deepening_go_backend_systems" recent="result_lookup" topics=["redis","precompute_pipeline","high_throughput","load_testing","postgres_fallback","connection_limiting"]`,
 };
 
 export const experienceItems: ExperienceItem[] = [
@@ -154,8 +151,64 @@ export const experienceItems: ExperienceItem[] = [
 
 export const projectSections: ProjectSection[] = [
 	{
-		title: "Shipped & production",
-		maturity: "production",
+		title: "Backend & systems",
+		type: "backend",
+		projects: [
+			{
+				name: "Result Lookup",
+				slug: "result-lookup",
+				description:
+					"High-throughput exam result API simulating Bangladesh's SSC like result publishing infrastructure — 31,910 RPS peak on a single instance, zero errors",
+				stack: ["Go", "PostgreSQL", "Redis", "pgx/v5", "Docker"],
+				status: "shipped",
+				type: "backend",
+				source: "https://github.com/PratikDev/result-lookup"
+			},
+			{
+				name: "URL Health Checker",
+				slug: "url-health-checker",
+				description:
+					"Background job queue in Go — URL health checker with worker-based processing, retry logic, and exponential backoff.",
+				stack: ["Go", "PostgreSQL", "pgx/v5", "Docker"],
+				status: "shipped",
+				type: "backend",
+				source: "https://github.com/PratikDev/url-health-checker"
+			},
+			{
+				name: "URL Shortener (Go rebuild)",
+				slug: "url-shortener-go-rebuild",
+				description:
+					"Production-style API with structured logging (slog), pgxpool, Docker multi-stage builds, schema migrations.",
+				stack: ["Go", "PostgreSQL", "pgxpool", "Docker", "slog"],
+				status: "learning",
+				type: "backend",
+				source: "https://github.com/PratikDev/url-shortener-api"
+			},
+			{
+				name: "The Super Tiny Compiler",
+				slug: "the-super-tiny-compiler",
+				description:
+					"Minimal compiler built from scratch in Go, covering tokenizing, parsing, and transformation.",
+				stack: ["Go", "Compiler basics", "Parsing"],
+				status: "learning",
+				type: "systems",
+				source: "https://github.com/PratikDev/the-super-tiny-compiler-go"
+			},
+			{
+				name: "URL Scraper",
+				slug: "url-scraper",
+				description:
+					"Terminal-based concurrent URL scraper using goroutines and mutex locks.",
+				stack: ["Go", "Goroutines", "Mutexes", "CLI"],
+				status: "learning",
+				type: "cli",
+				source: "https://github.com/PratikDev/url-scrapper"
+			},
+		],
+	},
+	{
+		title: "Full-stack & Frontend",
+		type: "fullstack",
 		projects: [
 			{
 				name: "Narrative Guard",
@@ -163,7 +216,6 @@ export const projectSections: ProjectSection[] = [
 				description:
 					"AI brand voice coherence agent. Audits content against brand guidelines before publishing.",
 				stack: ["Next.js", "Convex", "Gemini"],
-				maturity: "production",
 				status: "shipped",
 				type: "fullstack",
 				url: "https://narrative-guard.vercel.app",
@@ -175,7 +227,6 @@ export const projectSections: ProjectSection[] = [
 				description:
 					"Full-stack roadmap tool with upvoting, filtering, sorting, and comments.",
 				stack: ["Next.js", "Drizzle", "PostgreSQL"],
-				maturity: "production",
 				status: "shipped",
 				type: "fullstack",
 				url: "https://bitcode-roadmap-app.vercel.app",
@@ -187,72 +238,9 @@ export const projectSections: ProjectSection[] = [
 				description:
 					"Landing page with dynamic content for an IT solutions company.",
 				stack: ["Next.js", "Firebase", "React Query"],
-				maturity: "production",
 				status: "shipped",
 				type: "frontend",
 				url: "https://karcommunication.com",
-			},
-		],
-	},
-	{
-		title: "Backend & systems learning",
-		note: "Projects I built specifically to learn backend fundamentals - not production software.",
-		maturity: "learning",
-		projects: [
-			{
-				name: "URL Shortener (Go rebuild)",
-				slug: "url-shortener-go-rebuild",
-				description:
-					"Production-style API with structured logging (slog), pgxpool, Docker multi-stage builds, schema migrations.",
-				stack: ["Go", "PostgreSQL", "pgxpool", "Docker", "slog"],
-				maturity: "learning",
-				status: "learning",
-				type: "backend",
-				source: "https://github.com/PratikDev/url-shortener-api"
-			},
-			{
-				name: "The Super Tiny Compiler",
-				slug: "the-super-tiny-compiler",
-				description:
-					"Minimal compiler built from scratch in Go, covering tokenizing, parsing, and transformation.",
-				stack: ["Go", "Compiler basics", "Parsing"],
-				maturity: "learning",
-				status: "learning",
-				type: "systems",
-				source: "https://github.com/PratikDev/the-super-tiny-compiler-go"
-			},
-			{
-				name: "URL Health Checker",
-				slug: "url-health-checker",
-				description:
-					"Background job queue in Go — URL health checker with worker-based processing, retry logic, and exponential backoff.",
-				stack: ["Go", "PostgreSQL", "pgx/v5", "Docker"],
-				maturity: "production",
-				status: "shipped",
-				type: "backend",
-				source: "https://github.com/PratikDev/url-health-checker"
-			},
-			{
-				name: "Result Lookup",
-				slug: "result-lookup",
-				description:
-					"High-throughput exam result API simulating Bangladesh's SSC like result publishing infrastructure — designed to serve 2M student results at a single fixed moment",
-				stack: ["Go", "PostgreSQL", "Redis", "pgx/v5", "Docker"],
-				maturity: "production",
-				status: "shipped",
-				type: "backend",
-				source: "https://github.com/PratikDev/result-lookup"
-			},
-			{
-				name: "URL Scraper",
-				slug: "url-scraper",
-				description:
-					"Terminal-based concurrent URL scraper using goroutines and mutex locks.",
-				stack: ["Go", "Goroutines", "Mutexes", "CLI"],
-				maturity: "learning",
-				status: "learning",
-				type: "cli",
-				source: "https://github.com/PratikDev/url-scrapper"
 			},
 		],
 	},
@@ -262,20 +250,22 @@ export const skillGroups: SkillGroup[] = [
 	{
 		label: "Primary",
 		key: "primary",
-		description: "what I'm hired for",
-		skills: ["React", "Next.js", "TypeScript", "Tailwind", "ShadcnUI"],
+		skills: ["Go", "PostgreSQL", "Redis", "pgx/v5", "Docker"],
 	},
 	{
 		label: "Backend & infra",
 		key: "backend",
-		description: "what I'm building toward",
-		skills: ["Go", "PostgreSQL", "Docker", "Drizzle ORM", "MongoDB"],
+		skills: ["golang-migrate", "slog", "pgxpool", "REST APIs", "Job Queues", "Worker Patterns", "Load Testing"],
+	},
+	{
+		label: "Frontend",
+		key: "frontend",
+		skills: ["React", "Next.js", "TypeScript", "Tailwind", "ShadcnUI"],
 	},
 	{
 		label: "AI & agents",
 		key: "ai_agents",
-		description: "agentic product tooling",
-		skills: ["Claude Code", "Mastra AI", "Vercel AI SDK", "OpenCode"],
+		skills: ["Claude Code", "Codex", "OpenCode", "Vercel AI SDK", "Mastra AI"],
 	},
 ];
 

@@ -110,28 +110,11 @@ Backend Engineer (Go) with a full-stack background — 4+ years of production ex
 
 ## Professional Experience
 
-- **Freelancer** (2021 - Oct 2023)
+- **Software Engineer** at **[Devspace](https://www.devspace.so/)** (March 2026 - Present)
 
-  - **Description:** Built and delivered full-stack web applications and APIs for multiple clients, working across frontend, backend, and deployment workflows.
-  - **Link:** [Fiverr Profile](https://www.fiverr.com/pratik_dev)
-
-- **Full-Stack Engineer** at **Bilsida** (Oct 2023 - Aug 2024)
-
-  - **Description:** Developed the frontend and backend of web apps and APIs for a Swedish car marketplace startup, working directly with founders during the company's pre-investment phase.
-  - **Tech Stack:** Next.js, Tailwind CSS, ShadcnUI, TypeScript, Appwrite, Docker
-  - **Impact:** Built core product UI and backend integrations from scratch, helping take the product from early development to investor-ready state.
-
-- **Full-Stack Engineer** at **[Hello World Communications](https://software.helloworldbd.com/)** (Sep 2024 - Jul 2025)
-
-  - **Description:** Built and maintained frontend applications, backend services, and APIs across multiple concurrent client projects for a software development agency.
-  - **Tech Stack:** Next.js, Tailwind CSS, ShadcnUI, TypeScript, Drizzle ORM, Appwrite, Firebase, Docker
-  - **Impact:** Owned engineering delivery across client projects end-to-end — from architecture decisions to deployment — directly responsible for client-facing UI quality and reliability.
-
-- **Frontend Engineer** at **[Hone](https://hone.gg/)** (Aug 2025 - Sep 2025)
-
-  - **Description:** Built and maintained user interfaces for both Web and Desktop applications, focusing on clean UI, performance, and scalable component architecture.
-  - **Tech Stack:** ReactJS, Tailwind CSS, ShadcnUI, TypeScript
-  - **Impact:** Built reusable, accessible UI components that improved both developer experience and frontend consistency across the codebase.
+  - **Description:** Building AI-powered product features, integrating modern agentic AI workflows (Mastra AI, Vercel AI SDK) into a production React/TypeScript application.
+  - **Tech Stack:** React, TypeScript, Mastra AI, Convex, OpenCode, Vercel AI SDK, Gemini
+  - **Impact:** Contributing to scalable frontend architecture while shipping AI-driven features across the full product lifecycle.
 
 - **Full-Stack Engineer** at **[Osilion](https://osilion.no/)** (Oct 2025 - Feb 2026)
 
@@ -139,11 +122,30 @@ Backend Engineer (Go) with a full-stack background — 4+ years of production ex
   - **Tech Stack:** Next.js, TypeScript, Azure, PostgreSQL, Tailwind CSS, ShadcnUI
   - **Impact:** Helped define design patterns and component architecture used across multiple product surfaces, balancing speed of delivery with long-term maintainability.
 
-- **Software Engineer** at **[Devspace](https://www.devspace.so/)** (March 2026 - Present)
+- **Frontend Engineer** at **[Hone](https://hone.gg/)** (Aug 2025 - Sep 2025)
 
-  - **Description:** Building AI-powered product features, integrating modern agentic AI workflows (Mastra AI, Vercel AI SDK) into a production React/TypeScript application.
-  - **Tech Stack:** React, TypeScript, Mastra AI, Convex, OpenCode, Vercel AI SDK, Gemini
-  - **Impact:** Contributing to scalable frontend architecture while shipping AI-driven features across the full product lifecycle.
+  - **Description:** Built and maintained user interfaces for both Web and Desktop applications, focusing on clean UI, performance, and scalable component architecture.
+  - **Tech Stack:** ReactJS, Tailwind CSS, ShadcnUI, TypeScript
+  - **Impact:** Built reusable, accessible UI components that improved both developer experience and frontend consistency across the codebase.
+
+- **Full-Stack Engineer** at **[Hello World Communications](https://software.helloworldbd.com/)** (Sep 2024 - Jul 2025)
+
+  - **Description:** Built and maintained frontend applications, backend services, and APIs across multiple concurrent client projects for a software development agency.
+  - **Tech Stack:** Next.js, Tailwind CSS, ShadcnUI, TypeScript, Drizzle ORM, Appwrite, Firebase, Docker
+  - **Impact:** Owned engineering delivery across client projects end-to-end — from architecture decisions to deployment — directly responsible for client-facing UI quality and reliability.
+
+- **Full-Stack Engineer** at **Bilsida** (Oct 2023 - Aug 2024)
+
+  - **Description:** Developed the frontend and backend of web apps and APIs for a Swedish car marketplace startup, working directly with founders during the company's pre-investment phase.
+  - **Tech Stack:** Next.js, Tailwind CSS, ShadcnUI, TypeScript, Appwrite, Docker
+  - **Impact:** Built core product UI and backend integrations from scratch, helping take the product from early development to investor-ready state.
+
+- **Freelancer** (2021 - Oct 2023)
+
+  - **Description:** Built and delivered full-stack web applications and APIs for multiple clients, working across frontend, backend, and deployment workflows.
+  - **Link:** [Fiverr Profile](https://www.fiverr.com/pratik_dev)
+
+
 
 ---
 

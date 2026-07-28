@@ -181,6 +181,10 @@
 		line-height: var(--site-leading);
 	}
 
+	a[target="_blank"]:hover {
+		text-decoration: underline;
+	}
+
 	button:not(:disabled),
 	[role="button"]:not(:disabled) {
 		cursor: pointer;
@@ -280,8 +284,16 @@
 		@apply flex h-(--site-project-visual-height) items-end overflow-hidden bg-secondary p-4 text-xs font-semibold uppercase tracking-[0.16em] text-secondary-foreground;
 		border-radius: calc(var(--site-radius-card) * 0.75);
 		background-image:
-			linear-gradient(135deg, color-mix(in srgb, var(--site-accent), transparent 72%), transparent 54%),
-			linear-gradient(45deg, color-mix(in srgb, var(--site-secondary-accent), transparent 82%), transparent 50%);
+			linear-gradient(
+				135deg,
+				color-mix(in srgb, var(--site-accent), transparent 72%),
+				transparent 54%
+			),
+			linear-gradient(
+				45deg,
+				color-mix(in srgb, var(--site-secondary-accent), transparent 82%),
+				transparent 50%
+			);
 	}
 
 	.contact-link {

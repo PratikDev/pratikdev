@@ -1,8 +1,8 @@
 import { GitBranch, Mail, Network, Send } from "lucide-react";
 
 import { Section } from "@/components/layout/Section";
-import { contactLinks } from "@/content/portfolio";
 import type { ContactLink } from "@/content/portfolio";
+import { contactLinks } from "@/content/portfolio";
 import type { ModeAwareProps } from "@/lib/mode";
 import { Reveal } from "./Reveal";
 
@@ -11,19 +11,44 @@ function ContactIcon({ item }: { item: ContactLink }) {
 
 	switch (item.key) {
 		case "email":
-			return <Mail className={className} aria-hidden="true" />;
+			return (
+				<Mail
+					className={className}
+					aria-hidden="true"
+				/>
+			);
 		case "github":
-			return <GitBranch className={className} aria-hidden="true" />;
+			return (
+				<GitBranch
+					className={className}
+					aria-hidden="true"
+				/>
+			);
 		case "linkedin":
-			return <Network className={className} aria-hidden="true" />;
+			return (
+				<Network
+					className={className}
+					aria-hidden="true"
+				/>
+			);
 		case "x":
-			return <Send className={className} aria-hidden="true" />;
+			return (
+				<Send
+					className={className}
+					aria-hidden="true"
+				/>
+			);
 	}
 }
 
 export function ContactSection({ mode }: ModeAwareProps) {
 	return (
-		<Section id="contact" title="Contact" eyebrow="Open channel" mode={mode}>
+		<Section
+			id="contact"
+			title="Contact"
+			eyebrow="Open channel"
+			mode={mode}
+		>
 			<Reveal className="site-card">
 				{mode === "frontend" ? (
 					<div className="grid gap-3 sm:grid-cols-2">
@@ -52,10 +77,19 @@ export function ContactSection({ mode }: ModeAwareProps) {
 						<code>
 							<span className="syntax-muted">{"{"}</span>
 							{contactLinks.map((item, index) => (
-								<div key={item.key} className="pl-4">
+								<div
+									key={item.key}
+									className="pl-4"
+								>
 									<span className="syntax-key">"{item.key}"</span>
 									<span className="syntax-muted">: </span>
-									<span className="syntax-value">"{item.display}"</span>
+									<a
+										target="_blank"
+										href={item.href}
+										className="syntax-value"
+									>
+										"{item.display}"
+									</a>
 									{index < contactLinks.length - 1 ? (
 										<span className="syntax-muted">,</span>
 									) : null}

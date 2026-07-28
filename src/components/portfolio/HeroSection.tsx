@@ -14,7 +14,7 @@ export function HeroSection({ mode }: ModeAwareProps) {
 			<div className="mx-auto grid w-full max-w-6xl gap-8 px-4 pb-12 sm:px-6 lg:px-8">
 				<Reveal className="max-w-4xl">
 					<p className="mb-4 text-sm font-medium text-primary">
-						{mode === "frontend" ? "Frontend craft, backend curiosity" : "$ whoami"}
+						{mode === "frontend" ? "Backend engineering, Go" : "$ whoami"}
 					</p>
 					{mode === "frontend" ? (
 						<>
@@ -31,10 +31,17 @@ export function HeroSection({ mode }: ModeAwareProps) {
 						</pre>
 					)}
 					<div className="mt-8 flex flex-wrap items-center gap-4">
-						<Button asChild size="lg" className="rounded-(--site-radius-control)">
+						<Button
+							asChild
+							size="lg"
+							className="rounded-(--site-radius-control)"
+						>
 							<a href="#projects">
 								View projects
-								<ArrowRight className="size-4" aria-hidden="true" />
+								<ArrowRight
+									className="size-4"
+									aria-hidden="true"
+								/>
 							</a>
 						</Button>
 						<a
@@ -45,7 +52,10 @@ export function HeroSection({ mode }: ModeAwareProps) {
 						</a>
 					</div>
 				</Reveal>
-				<Reveal delay={120} className="text-sm italic text-muted-foreground">
+				<Reveal
+					delay={120}
+					className="text-sm italic text-muted-foreground"
+				>
 					{mode === "frontend"
 						? "Use the toggle in the nav to switch from the interface to the internals."
 						: "// same content, raw surface"}

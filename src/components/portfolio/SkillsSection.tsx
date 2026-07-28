@@ -36,9 +36,6 @@ export function SkillsSection({ mode }: ModeAwareProps) {
 									<h3 className="font-semibold text-card-foreground">
 										{group.label}
 									</h3>
-									<p className="mt-1 text-sm text-muted-foreground">
-										{group.description}
-									</p>
 								</div>
 							</div>
 							<div className="flex flex-wrap gap-2">

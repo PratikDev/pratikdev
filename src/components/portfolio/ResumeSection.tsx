@@ -1,8 +1,8 @@
 import { Download, FileCode2, FileText } from "lucide-react";
 
 import { Section } from "@/components/layout/Section";
-import { resumeItems } from "@/content/portfolio";
 import type { ResumeItem } from "@/content/portfolio";
+import { resumeItems } from "@/content/portfolio";
 import type { ModeAwareProps } from "@/lib/mode";
 import { Reveal } from "./Reveal";
 
@@ -11,9 +11,19 @@ function ResumeIcon({ item }: { item: ResumeItem }) {
 
 	switch (item.key) {
 		case "pdf":
-			return <FileText className={className} aria-hidden="true" />;
+			return (
+				<FileText
+					className={className}
+					aria-hidden="true"
+				/>
+			);
 		case "markdown":
-			return <FileCode2 className={className} aria-hidden="true" />;
+			return (
+				<FileCode2
+					className={className}
+					aria-hidden="true"
+				/>
+			);
 	}
 }
 
@@ -42,7 +52,10 @@ export function ResumeSection({ mode }: ModeAwareProps) {
 								<span className="min-w-0 flex-1">
 									<span className="flex items-center gap-2 text-sm font-medium text-card-foreground">
 										{item.label}
-										<Download className="size-3.5" aria-hidden="true" />
+										<Download
+											className="size-3.5"
+											aria-hidden="true"
+										/>
 									</span>
 									<span className="mt-1 block text-sm text-muted-foreground">
 										{item.description}
@@ -59,13 +72,18 @@ export function ResumeSection({ mode }: ModeAwareProps) {
 						<code>
 							<span className="syntax-muted">[</span>
 							{resumeItems.map((item, index) => (
-								<div key={item.key} className="pl-4">
+								<div
+									key={item.key}
+									className="pl-4"
+								>
 									<span className="syntax-muted">{"{"}</span>
 									<div className="pl-4">
 										<div>
 											<span className="syntax-key">"format"</span>
 											<span className="syntax-muted">: </span>
-											<span className="syntax-value">"{item.format.toLowerCase()}"</span>
+											<span className="syntax-value">
+												"{item.format.toLowerCase()}"
+											</span>
 											<span className="syntax-muted">,</span>
 										</div>
 										<div>
@@ -77,7 +95,13 @@ export function ResumeSection({ mode }: ModeAwareProps) {
 										<div>
 											<span className="syntax-key">"href"</span>
 											<span className="syntax-muted">: </span>
-											<span className="syntax-value">"{item.href}"</span>
+											<a
+												target="_blank"
+												href={item.href}
+												className="syntax-value"
+											>
+												"{item.href}"
+											</a>
 										</div>
 									</div>
 									<span className="syntax-muted">

@@ -69,7 +69,13 @@ function ProjectJson({ project }: { project: ProjectItem }) {
 							label="url"
 							comma={hasSource}
 						>
-							<span className="syntax-value">"{displayUrl(project.url)}"</span>
+							<a
+								target="_blank"
+								href={project.url}
+								className="syntax-value"
+							>
+								"{displayUrl(project.url)}"
+							</a>
 						</JsonLine>
 					) : null}
 					{project.source ? (
@@ -77,9 +83,13 @@ function ProjectJson({ project }: { project: ProjectItem }) {
 							label="source"
 							comma={false}
 						>
-							<span className="syntax-value">
+							<a
+								target="_blank"
+								href={project.source}
+								className="syntax-value"
+							>
 								"{displayUrl(project.source)}"
-							</span>
+							</a>
 						</JsonLine>
 					) : null}
 				</div>
@@ -99,11 +109,11 @@ export function ProjectsSection({ mode }: ModeAwareProps) {
 		>
 			<div className="grid gap-12">
 				{projectSections.map((section) => (
-					<div key={section.maturity}>
+					<div key={section.type}>
 						<div className="mb-5 flex items-center gap-3">
 							{mode === "frontend" ? (
 								<div className="flex size-9 items-center justify-center rounded-(--site-radius-control) bg-primary text-primary-foreground">
-									{section.maturity === "production" ? (
+									{section.type === "fullstack" ? (
 										<Sparkles
 											className="size-4"
 											aria-hidden="true"
@@ -120,11 +130,6 @@ export function ProjectsSection({ mode }: ModeAwareProps) {
 								{mode === "backend" ? `// ${section.title}` : section.title}
 							</h3>
 						</div>
-						{section.note ? (
-							<p className="mb-5 max-w-2xl text-sm italic text-muted-foreground">
-								{mode === "backend" ? `// ${section.note}` : section.note}
-							</p>
-						) : null}
 						<div className="grid gap-4 md:grid-cols-2 lg:grid-cols-3">
 							{section.projects.map((project, index) => (
 								<Reveal
