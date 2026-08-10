@@ -72,11 +72,11 @@ export const navItems: NavItem[] = [
 
 export const heroContent = {
 	headline:
-		"Backend engineer building Golang systems - 4+ years of fullstack experience across React, Next.js, and TS.",
+		"Fullstack engineer building production systems in Go, React, and TypeScript — 4+ years shipping across the whole stack.",
 	subheading:
-		"I build backend systems in Go and ship production interfaces in React — currently focused on the backend side.",
+		"I build backend systems in Go and ship production interfaces in React — equally comfortable on either side of the stack.",
 	logLine:
-		`[${new Date().toISOString()}] INFO role="backend_engineer" status="open_to_work" focus="golang"`,
+		`[${new Date().toISOString()}] INFO role="fullstack_engineer" status="open_to_work" focus="go_react_typescript"`,
 };
 
 export const currentlyContent = {
@@ -151,6 +151,44 @@ export const experienceItems: ExperienceItem[] = [
 
 export const projectSections: ProjectSection[] = [
 	{
+		title: "Full-stack & Frontend",
+		type: "fullstack",
+		projects: [
+			{
+				name: "Narrative Guard",
+				slug: "narrative-guard",
+				description:
+					"AI brand voice coherence agent. Audits content against brand guidelines before publishing.",
+				stack: ["Next.js", "Convex", "Gemini"],
+				status: "shipped",
+				type: "fullstack",
+				url: "https://narrative-guard.vercel.app",
+				source: "https://github.com/PratikDev/narrative-guard",
+			},
+			{
+				name: "Roadmap App",
+				slug: "roadmap-app",
+				description:
+					"Full-stack roadmap tool with upvoting, filtering, sorting, and comments.",
+				stack: ["Next.js", "Drizzle", "PostgreSQL"],
+				status: "shipped",
+				type: "fullstack",
+				url: "https://bitcode-roadmap-app.vercel.app",
+				source: "https://github.com/pratikDev/roadmap-app"
+			},
+			{
+				name: "Kar Communication",
+				slug: "kar-communication",
+				description:
+					"Landing page with dynamic content for an IT solutions company.",
+				stack: ["Next.js", "Firebase", "React Query"],
+				status: "shipped",
+				type: "frontend",
+				url: "https://karcommunication.com",
+			},
+		],
+	},
+	{
 		title: "Backend & systems",
 		type: "backend",
 		projects: [
@@ -206,61 +244,23 @@ export const projectSections: ProjectSection[] = [
 			},
 		],
 	},
-	{
-		title: "Full-stack & Frontend",
-		type: "fullstack",
-		projects: [
-			{
-				name: "Narrative Guard",
-				slug: "narrative-guard",
-				description:
-					"AI brand voice coherence agent. Audits content against brand guidelines before publishing.",
-				stack: ["Next.js", "Convex", "Gemini"],
-				status: "shipped",
-				type: "fullstack",
-				url: "https://narrative-guard.vercel.app",
-				source: "https://github.com/PratikDev/narrative-guard",
-			},
-			{
-				name: "Roadmap App",
-				slug: "roadmap-app",
-				description:
-					"Full-stack roadmap tool with upvoting, filtering, sorting, and comments.",
-				stack: ["Next.js", "Drizzle", "PostgreSQL"],
-				status: "shipped",
-				type: "fullstack",
-				url: "https://bitcode-roadmap-app.vercel.app",
-				source: "https://github.com/pratikDev/roadmap-app"
-			},
-			{
-				name: "Kar Communication",
-				slug: "kar-communication",
-				description:
-					"Landing page with dynamic content for an IT solutions company.",
-				stack: ["Next.js", "Firebase", "React Query"],
-				status: "shipped",
-				type: "frontend",
-				url: "https://karcommunication.com",
-			},
-		],
-	},
 ];
 
 export const skillGroups: SkillGroup[] = [
 	{
 		label: "Primary",
 		key: "primary",
-		skills: ["Go", "PostgreSQL", "Redis", "pgx/v5", "Docker"],
-	},
-	{
-		label: "Backend & infra",
-		key: "backend",
-		skills: ["golang-migrate", "slog", "pgxpool", "REST APIs", "Job Queues", "Worker Patterns", "Load Testing"],
+		skills: ["Go", "TypeScript", "React", "PostgreSQL", "Docker"],
 	},
 	{
 		label: "Frontend",
 		key: "frontend",
 		skills: ["React", "Next.js", "TypeScript", "Tailwind", "ShadcnUI"],
+	},
+	{
+		label: "Backend & infra",
+		key: "backend",
+		skills: ["golang-migrate", "slog", "pgxpool", "REST APIs", "Redis", "pgx/v5", "Job Queues", "Worker Patterns", "Load Testing"],
 	},
 	{
 		label: "AI & agents",

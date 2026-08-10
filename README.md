@@ -1,6 +1,6 @@
 # Pratik Dev
 
-Frontend by trade, currently learning Go because the TypeScript market is crowded and I like knowing how things work underneath.
+Fullstack by trade — shipping React/TypeScript and Go in production, going deeper on distributed systems because I like knowing how things work underneath.
 
 **Portfolio:** [iam-pratik.vercel.app](https://iam-pratik.vercel.app/)
 

@@ -14,7 +14,7 @@ export function HeroSection({ mode }: ModeAwareProps) {
 			<div className="mx-auto grid w-full max-w-6xl gap-8 px-4 pb-12 sm:px-6 lg:px-8">
 				<Reveal className="max-w-4xl">
 					<p className="mb-4 text-sm font-medium text-primary">
-						{mode === "frontend" ? "Backend engineering, Go" : "$ whoami"}
+						{mode === "frontend" ? "Fullstack engineering, Go + React" : "$ whoami"}
 					</p>
 					{mode === "frontend" ? (
 						<>
