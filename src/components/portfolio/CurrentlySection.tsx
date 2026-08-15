@@ -1,29 +1,16 @@
-import { Activity } from "lucide-react";
-
-import { Section } from "@/components/layout/Section";
+import { Panel } from "@/components/layout/Panel";
 import { currentlyContent } from "@/content/portfolio";
-import type { ModeAwareProps } from "@/lib/mode";
-import { Reveal } from "./Reveal";
 
-export function CurrentlySection({ mode }: ModeAwareProps) {
+export function CurrentlySection() {
 	return (
-		<Section id="about" title="Currently" eyebrow="About" mode={mode}>
-			<Reveal className="site-card">
-				{mode === "frontend" ? (
-					<div className="flex gap-4">
-						<div className="flex size-10 shrink-0 items-center justify-center rounded-(--site-radius-control) bg-primary text-primary-foreground">
-							<Activity className="size-5" aria-hidden="true" />
-						</div>
-						<p className="text-base leading-(--site-leading) text-card-foreground">
-							{currentlyContent.prose}
-						</p>
-					</div>
-				) : (
-					<pre className="terminal-block overflow-x-auto">
-						<code>{currentlyContent.logLine}</code>
-					</pre>
-				)}
-			</Reveal>
-		</Section>
+		<Panel
+			id="about"
+			eyebrow="About"
+			title="Currently"
+		>
+			<p className="text-(length:--text-h2) leading-snug font-medium text-muted-foreground">
+				{currentlyContent.prose}
+			</p>
+		</Panel>
 	);
 }

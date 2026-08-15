@@ -1,13 +1,11 @@
 import { GitBranch, Mail, Network, Send } from "lucide-react";
 
-import { Section } from "@/components/layout/Section";
+import { Panel } from "@/components/layout/Panel";
 import type { ContactLink } from "@/content/portfolio";
 import { contactLinks } from "@/content/portfolio";
-import type { ModeAwareProps } from "@/lib/mode";
-import { Reveal } from "./Reveal";
 
 function ContactIcon({ item }: { item: ContactLink }) {
-	const className = "size-4";
+	const className = "size-6";
 
 	switch (item.key) {
 		case "email":
@@ -41,65 +39,37 @@ function ContactIcon({ item }: { item: ContactLink }) {
 	}
 }
 
-export function ContactSection({ mode }: ModeAwareProps) {
+export function ContactSection() {
 	return (
-		<Section
+		<Panel
 			id="contact"
-			title="Contact"
 			eyebrow="Open channel"
-			mode={mode}
+			title="Let's talk"
 		>
-			<Reveal className="site-card">
-				{mode === "frontend" ? (
-					<div className="grid gap-3 sm:grid-cols-2">
-						{contactLinks.map((item) => (
-							<a
-								key={item.key}
-								href={item.href}
-								target={item.key === "email" ? undefined : "_blank"}
-								rel={item.key === "email" ? undefined : "noreferrer"}
-								className="contact-link"
-							>
-								<ContactIcon item={item} />
-								<span>
-									<span className="block text-sm font-medium text-card-foreground">
-										{item.label}
-									</span>
-									<span className="break-all text-sm text-muted-foreground">
-										{item.display}
-									</span>
-								</span>
-							</a>
-						))}
-					</div>
-				) : (
-					<pre className="terminal-block overflow-x-auto">
-						<code>
-							<span className="syntax-muted">{"{"}</span>
-							{contactLinks.map((item, index) => (
-								<div
-									key={item.key}
-									className="pl-4"
-								>
-									<span className="syntax-key">"{item.key}"</span>
-									<span className="syntax-muted">: </span>
-									<a
-										target="_blank"
-										href={item.href}
-										className="syntax-value"
-									>
-										"{item.display}"
-									</a>
-									{index < contactLinks.length - 1 ? (
-										<span className="syntax-muted">,</span>
-									) : null}
-								</div>
-							))}
-							<span className="syntax-muted">{"}"}</span>
-						</code>
-					</pre>
-				)}
-			</Reveal>
-		</Section>
+			<p className="max-w-2xl text-(length:--text-body) text-muted-foreground">
+				Open to new opportunities.
+			</p>
+			<div className="mt-10 grid gap-5 sm:grid-cols-2">
+				{contactLinks.map((item) => (
+					<a
+						key={item.key}
+						href={item.href}
+						target={item.key === "email" ? undefined : "_blank"}
+						rel={item.key === "email" ? undefined : "noreferrer"}
+						className="contact-link items-center gap-4 p-6 shadow-md"
+					>
+						<ContactIcon item={item} />
+						<span>
+							<span className="font-heading block text-(length:--text-h2) font-semibold text-card-foreground">
+								{item.label}
+							</span>
+							<span className="text-lg break-all text-muted-foreground">
+								{item.display}
+							</span>
+						</span>
+					</a>
+				))}
+			</div>
+		</Panel>
 	);
 }

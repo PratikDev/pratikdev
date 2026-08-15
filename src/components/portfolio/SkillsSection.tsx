@@ -1,75 +1,25 @@
-import { Code2 } from "lucide-react";
-
-import { Section } from "@/components/layout/Section";
+import { Panel } from "@/components/layout/Panel";
 import { skillGroups } from "@/content/portfolio";
-import type { ModeAwareProps } from "@/lib/mode";
-import { Reveal } from "./Reveal";
 
-function normalizeSkill(skill: string) {
-	return skill.toLowerCase().replaceAll(" ", "_").replaceAll(".", "");
-}
-
-export function SkillsSection({ mode }: ModeAwareProps) {
+export function SkillsSection() {
 	return (
-		<Section
-			id="skills"
-			title="Skills"
-			eyebrow="Tooling"
-			mode={mode}
-		>
-			{mode === "frontend" ? (
-				<div className="grid gap-4 md:grid-cols-3">
-					{skillGroups.map((group, index) => (
-						<Reveal
-							key={group.key}
-							delay={index * 80}
-							className="site-card"
-						>
-							<div className="mb-5 flex items-start gap-3">
-								<div className="flex size-9 shrink-0 items-center justify-center rounded-(--site-radius-control) bg-primary text-primary-foreground">
-									<Code2
-										className="size-4"
-										aria-hidden="true"
-									/>
-								</div>
-								<div>
-									<h3 className="font-semibold text-card-foreground">
-										{group.label}
-									</h3>
-								</div>
-							</div>
-							<div className="flex flex-wrap gap-2">
-								{group.skills.map((skill) => (
-									<span
-										key={skill}
-										className="skill-pill"
-									>
-										{skill}
-									</span>
-								))}
-							</div>
-						</Reveal>
-					))}
-				</div>
-			) : (
-				<Reveal className="terminal-block overflow-x-auto">
-					<div className="grid gap-3">
-						{skillGroups.map((group) => (
-							<div
-								key={group.key}
-								className="min-w-max"
-							>
-								<span className="syntax-key">{group.key.padEnd(10)}</span>
-								<span className="syntax-muted"> = [</span>
-								<span className="syntax-value">
-									{group.skills.map(normalizeSkill).join(", ")}
+		<Panel id="skills" eyebrow="Tooling" title="Skills">
+			<div className="grid gap-8 sm:grid-cols-2">
+				{skillGroups.map((group) => (
+					<div key={group.key}>
+						<h3 className="mb-3 text-sm font-semibold tracking-wide text-muted-foreground uppercase">
+							{group.label}
+						</h3>
+						<div className="flex flex-wrap gap-2">
+							{group.skills.map((skill) => (
+								<span key={skill} className="skill-pill">
+									{skill}
 								</span>
-								<span className="syntax-muted">]</span>
-							</div>
-						))}
+							))}
+						</div>
 					</div>
-				</Reveal>
-			)}
-		</Section>
+				))}
+			</div>
+		</Panel>
 	);
 }
