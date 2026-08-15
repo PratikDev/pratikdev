@@ -1,6 +1,6 @@
 import * as React from "react";
 
-import { useScrollStage } from "@/hooks/use-scroll-stage";
+import { useReducedMotion } from "@/hooks/use-reduced-motion";
 import { cn } from "@/lib/utils";
 
 type PanelProps = React.HTMLAttributes<HTMLElement> & {
@@ -13,7 +13,7 @@ export const Panel = React.forwardRef<HTMLElement, PanelProps>(function Panel(
 	{ id, eyebrow, title, className, children, ...props },
 	ref,
 ) {
-	const { reducedMotion } = useScrollStage();
+	const reducedMotion = useReducedMotion();
 
 	return (
 		<section

@@ -6,6 +6,7 @@ export type ScrollStageContextValue = {
 	reducedMotion: boolean;
 	masterTween: GSAPTween | null;
 	scrollToPanel: (index: number) => void;
+	setInputLocked: (locked: boolean) => void;
 	stageRef: React.RefObject<HTMLDivElement | null>;
 	trackRef: React.RefObject<HTMLDivElement | null>;
 };

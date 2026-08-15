@@ -2,10 +2,10 @@ import { useGSAP } from "@gsap/react";
 import * as React from "react";
 
 import { ScrollStageContext, useScrollStage } from "@/hooks/use-scroll-stage";
+import { useReducedMotion } from "@/hooks/use-reduced-motion";
 import { gsap, ScrollTrigger } from "@/lib/gsap";
 import { PANEL_ORDER } from "@/lib/panels";
 
-const REDUCED_MOTION_QUERY = "(prefers-reduced-motion: reduce)";
 const panelCount = PANEL_ORDER.length;
 
 type ScrollStageProviderProps = {
@@ -19,11 +19,7 @@ export function ScrollStageProvider({ children }: ScrollStageProviderProps) {
 	const [masterTween, setMasterTween] = React.useState<GSAPTween | null>(
 		null,
 	);
-	const [reducedMotion] = React.useState(
-		() =>
-			typeof window !== "undefined" &&
-			window.matchMedia(REDUCED_MOTION_QUERY).matches,
-	);
+	const reducedMotion = useReducedMotion();
 
 	React.useEffect(() => {
 		if (
@@ -129,6 +125,11 @@ export function ScrollStageProvider({ children }: ScrollStageProviderProps) {
 		[masterTween, reducedMotion],
 	);
 
+	const inputLockedRef = React.useRef(false);
+	const setInputLocked = React.useCallback((locked: boolean) => {
+		inputLockedRef.current = locked;
+	}, []);
+
 	const activeIndexRef = React.useRef(activeIndex);
 	React.useEffect(() => {
 		activeIndexRef.current = activeIndex;
@@ -177,7 +178,7 @@ export function ScrollStageProvider({ children }: ScrollStageProviderProps) {
 
 		const handleWheel = (event: WheelEvent) => {
 			event.preventDefault();
-			if (isLocked) return;
+			if (isLocked || inputLockedRef.current) return;
 
 			wheelAccum += event.deltaY;
 			window.clearTimeout(resetTimer);
@@ -195,7 +196,7 @@ export function ScrollStageProvider({ children }: ScrollStageProviderProps) {
 		};
 
 		const handleKeydown = (event: KeyboardEvent) => {
-			if (isEditableTarget()) return;
+			if (inputLockedRef.current || isEditableTarget()) return;
 
 			if (NEXT_KEYS.has(event.key)) {
 				event.preventDefault();
@@ -224,10 +225,11 @@ export function ScrollStageProvider({ children }: ScrollStageProviderProps) {
 			reducedMotion,
 			masterTween,
 			scrollToPanel,
+			setInputLocked,
 			stageRef,
 			trackRef,
 		}),
-		[activeIndex, reducedMotion, masterTween, scrollToPanel],
+		[activeIndex, reducedMotion, masterTween, scrollToPanel, setInputLocked],
 	);
 
 	return (

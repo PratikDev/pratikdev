@@ -3,11 +3,11 @@ import * as React from "react";
 
 import { Panel } from "@/components/layout/Panel";
 import { heroContent } from "@/content/portfolio";
-import { useScrollStage } from "@/hooks/use-scroll-stage";
+import { useReducedMotion } from "@/hooks/use-reduced-motion";
 import { gsap } from "@/lib/gsap";
 
 export function HeroSection() {
-	const { reducedMotion } = useScrollStage();
+	const reducedMotion = useReducedMotion();
 	const headlineRef = React.useRef<HTMLHeadingElement | null>(null);
 
 	useGSAP(
