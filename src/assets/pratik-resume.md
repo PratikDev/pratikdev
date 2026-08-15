@@ -1,12 +1,12 @@
 **PRATIK DEV**
 
-pratikdevofficial1@gmail.com  •  \+880-1537220785
+pratikdevofficial1@gmail.com  •  +880-1537220785
 
 [GitHub](https://github.com/PratikDev)  •  [LinkedIn](https://linkedin.com/in/pratik-and-dev)  •  [Portfolio](https://iam-pratik.vercel.app)
 
 **PROFILE**
 
-Full-Stack Engineer with 4+ years building production web applications end to end, from frontend interfaces in React and Next.js through backend services in Node.js, TypeScript, and Go. Comfortable owning features across the entire stack: database schema design, REST API development, third-party service integration, and rendering strategy on the frontend. Experienced leading small teams, mentoring junior developers, conducting code reviews, and driving architectural decisions across client and product work.
+Software Engineer with 4+ years building production web applications end to end, from frontend interfaces in React and Next.js through backend services in Node.js, TypeScript, and Go. Comfortable owning features across the entire stack: database schema design, REST API development, third-party service integration, and rendering strategy on the frontend. Experienced leading small teams, conducting code reviews, and driving architectural decisions across client and product work.
 
 **SKILLS**
 
@@ -24,7 +24,7 @@ Full-Stack Engineer with 4+ years building production web applications end to en
 
 **Tools:** Git, GitHub, VS Code, Postman, Figma, Linear
 
-**Fundamentals:** REST API design and integration, database schema design, distributed backend systems, async job processing, structured logging and observability, third-party service integration, LLM API integration, SEO Optimization, Web Performance, Responsive Design, Accessibility, Cross-browser Compatibility, Agile/Scrum, GraphQL (learning), Jest/Cypress (learning)
+**Fundamentals:** REST API design and integration, database schema design, distributed backend systems, async job processing, structured logging and observability, third-party service integration, LLM API integration, SEO Optimization, Web Performance, Responsive Design, Accessibility, Cross-browser Compatibility, GraphQL (learning), Jest/Cypress (learning)
 
 **Soft Skills:** Communication, Ownership, Leadership, Mentoring, Collaboration, Analytical Thinking, Friendly & Approachable
 
@@ -46,15 +46,17 @@ Full-Stack Engineer with 4+ years building production web applications end to en
 [**Osilion**](https://osilion.no/)	Oct 2025 – Feb 2026  
 ***Full-Stack Engineer***
 
-* Served as one of the primary engineers on an internal productivity tool for a client, contributing to an 18% improvement in employee productivity.
+* Served as one of the primary engineers on an internal productivity tool for a client, contributing to improvement in employee productivity.
 
 * Mentored a junior developer, conducting regular code reviews and providing architectural guidance.
 
+* Worked on an intelligent recruitment platform, contributing to technical architecture decisions and component design patterns.
+
 * Built full-stack features using SSR for dynamic data and ISR/SSG for static surfaces; implemented SEO metadata, Open Graph tags, and the Next.js Metadata API. Used Zustand for cross-component state management.
 
-* Worked with the Appfarm low-code platform for rapid UI prototyping.
+* Worked with the Appfarm low-code platform for rapid development.
 
-* **Tech:** Next.js, TypeScript, PostgreSQL, Azure, Tailwind CSS, ShadcnUI, Zustand
+* **Tech:** Next.js, TypeScript, MySQL, Azure, Tailwind CSS, ShadcnUI, Tanstack Query, Zustand
 
 [**Hone**](https://hone.gg/)	Aug 2025 – Sep 2025  
 ***Frontend Engineer***
@@ -70,9 +72,9 @@ Full-Stack Engineer with 4+ years building production web applications end to en
 [**Hello World Communications**](https://software.helloworldbd.com/)	Sep 2024 – Jul 2025  
 ***Full-Stack Engineer***
 
-* Led the whole development flow end to end, ran sprint planning, conducted code reviews, and made key architectural decisions across multiple concurrent client projects.
+* Led the whole development flow end to end, conducted code reviews, and made key architectural decisions across multiple concurrent client projects
 
-* Reduced client closing time by roughly 50% through better scoping and delivery alignment between client requirements and the development team.
+* Reduced client closing time by roughly 50% through better scoping and delivery alignment between client requirements and the development team
 
 * Built and maintained backend APIs and integrated third-party services, including the SSLCommerz payment gateway and WebSocket-based real-time features.
 
@@ -85,7 +87,7 @@ Full-Stack Engineer with 4+ years building production web applications end to en
 **Bilsida**	Oct 2023 – Aug 2024  
 ***Full-Stack Engineer***
 
-* Built a Swedish car marketplace from scratch across the full stack, which went on to attract two of Sweden's largest car dealers, one of which acquired the platform.
+* Built a Swedish car marketplace from scratch across the full stack, which went on to attract two of Sweden's largest car dealers.
 
 * Mentored a junior developer and handled backend logic, database schema design, image optimization, and SEO across the platform.
 
