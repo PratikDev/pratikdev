@@ -71,7 +71,7 @@
 	--site-radius-card: 0px;
 	--site-radius-control: 0px;
 
-	--site-bg: #efece5;
+	--site-bg: white; /* efece5 */
 	--site-fg: #0e0d0c;
 	--site-muted: #5c5954;
 	--site-card: #ffffff;
