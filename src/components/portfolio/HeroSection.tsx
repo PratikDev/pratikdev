@@ -1,15 +1,18 @@
 import { useGSAP } from "@gsap/react";
-import * as React from "react";
 
 import { Panel } from "@/components/layout/Panel";
 import { heroContent } from "@/content/portfolio";
 import { useReducedMotion } from "@/hooks/use-reduced-motion";
+import { useStageInputLock } from "@/hooks/use-stage-input-lock";
 import { gsap } from "@/lib/gsap";
+import { useRef, useState } from "react";
 import { TypeGrowText } from "../ui/TypeGrowText";
 
 export function HeroSection() {
+	const [isAnimating, setIsAnimating] = useState(true);
+	useStageInputLock(isAnimating, "hero-typing");
 	const reducedMotion = useReducedMotion();
-	const headlineRef = React.useRef<HTMLHeadingElement | null>(null);
+	const headlineRef = useRef<HTMLHeadingElement | null>(null);
 
 	useGSAP(
 		() => {
@@ -42,10 +45,12 @@ export function HeroSection() {
 					growDelay: 800,
 					cursorColor: "var(--primary)",
 					growEase: "backOut",
+					onGrowComplete: () => setIsAnimating(false),
 				}}
 			>
 				{heroContent.headline}
 			</TypeGrowText>
+
 			<p className="mt-6 text-(length:--text-h2) font-medium text-primary">
 				{heroContent.highlight}
 			</p>

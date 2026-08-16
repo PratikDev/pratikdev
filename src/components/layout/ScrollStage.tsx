@@ -1,8 +1,8 @@
 import { useGSAP } from "@gsap/react";
 import * as React from "react";
 
-import { ScrollStageContext, useScrollStage } from "@/hooks/use-scroll-stage";
 import { useReducedMotion } from "@/hooks/use-reduced-motion";
+import { ScrollStageContext, useScrollStage } from "@/hooks/use-scroll-stage";
 import { gsap, ScrollTrigger } from "@/lib/gsap";
 import { PANEL_ORDER } from "@/lib/panels";
 
@@ -16,9 +16,7 @@ export function ScrollStageProvider({ children }: ScrollStageProviderProps) {
 	const stageRef = React.useRef<HTMLDivElement | null>(null);
 	const trackRef = React.useRef<HTMLDivElement | null>(null);
 	const [activeIndex, setActiveIndex] = React.useState(0);
-	const [masterTween, setMasterTween] = React.useState<GSAPTween | null>(
-		null,
-	);
+	const [masterTween, setMasterTween] = React.useState<GSAPTween | null>(null);
 	const reducedMotion = useReducedMotion();
 
 	React.useEffect(() => {
@@ -65,9 +63,7 @@ export function ScrollStageProvider({ children }: ScrollStageProviderProps) {
 					invalidateOnRefresh: true,
 					anticipatePin: 1,
 					onUpdate: (self) => {
-						setActiveIndex(
-							Math.round(self.progress * (panelCount - 1)),
-						);
+						setActiveIndex(Math.round(self.progress * (panelCount - 1)));
 					},
 				},
 			});
@@ -127,14 +123,17 @@ export function ScrollStageProvider({ children }: ScrollStageProviderProps) {
 
 	const inputLockedRef = React.useRef(false);
 	const lockReasonsRef = React.useRef<Set<string>>(new Set());
-	const setInputLocked = React.useCallback((reason: string, locked: boolean) => {
-		if (locked) {
-			lockReasonsRef.current.add(reason);
-		} else {
-			lockReasonsRef.current.delete(reason);
-		}
-		inputLockedRef.current = lockReasonsRef.current.size > 0;
-	}, []);
+	const setInputLocked = React.useCallback(
+		(reason: string, locked: boolean) => {
+			if (locked) {
+				lockReasonsRef.current.add(reason);
+			} else {
+				lockReasonsRef.current.delete(reason);
+			}
+			inputLockedRef.current = lockReasonsRef.current.size > 0;
+		},
+		[],
+	);
 
 	const activeIndexRef = React.useRef(activeIndex);
 	React.useEffect(() => {
@@ -202,15 +201,16 @@ export function ScrollStageProvider({ children }: ScrollStageProviderProps) {
 		};
 
 		const handleKeydown = (event: KeyboardEvent) => {
-			if (inputLockedRef.current || isEditableTarget()) return;
+			if (isEditableTarget()) return;
 
-			if (NEXT_KEYS.has(event.key)) {
-				event.preventDefault();
-				advance(1);
-			} else if (PREV_KEYS.has(event.key)) {
-				event.preventDefault();
-				advance(-1);
-			}
+			const isNext = NEXT_KEYS.has(event.key);
+			const isPrev = PREV_KEYS.has(event.key);
+			if (!isNext && !isPrev) return;
+
+			event.preventDefault(); // always suppress native scroll for these keys
+			if (inputLockedRef.current) return; // but only advance the panel if unlocked
+
+			advance(isNext ? 1 : -1);
 		};
 
 		window.addEventListener("wheel", handleWheel, { passive: false });
@@ -257,8 +257,14 @@ export function ScrollTrack({ children }: ScrollTrackProps) {
 	}
 
 	return (
-		<div ref={stageRef} className="h-screen w-screen overflow-hidden">
-			<div ref={trackRef} className="flex h-full w-max">
+		<div
+			ref={stageRef}
+			className="h-screen w-screen overflow-hidden"
+		>
+			<div
+				ref={trackRef}
+				className="flex h-full w-max"
+			>
 				{children}
 			</div>
 		</div>
