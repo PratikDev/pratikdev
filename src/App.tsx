@@ -3,8 +3,8 @@ import {
 	ScrollTrack,
 } from "@/components/layout/ScrollStage";
 import { SiteMenu } from "@/components/layout/SiteMenu";
+import { AboutSection } from "@/components/portfolio/AboutSection";
 import { ContactSection } from "@/components/portfolio/ContactSection";
-import { CurrentlySection } from "@/components/portfolio/CurrentlySection";
 import { ExperienceSection } from "@/components/portfolio/ExperienceSection";
 import { HeroSection } from "@/components/portfolio/HeroSection";
 import { ProjectsSection } from "@/components/portfolio/ProjectsSection";
@@ -32,7 +32,7 @@ export default function App() {
 				<SiteMenu />
 				<ScrollTrack>
 					<HeroSection />
-					<CurrentlySection />
+					<AboutSection />
 					<ExperienceSection />
 					<ProjectsSection />
 					<SkillsSection />

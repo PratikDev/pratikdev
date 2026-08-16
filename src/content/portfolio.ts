@@ -16,6 +16,15 @@ export type ExperienceItem = {
 	stack: string[];
 };
 
+export type AboutChapter = {
+	key: string;
+	label: string;
+	heading: string;
+	body: string;
+	emphasis?: string;
+	tags?: string[];
+};
+
 export type ProjectType = "backend" | "fullstack";
 
 export type ProjectItem = {
@@ -70,10 +79,35 @@ export const heroContent = {
 	highlight: "Go, React, TypeScript.",
 };
 
-export const currentlyContent = {
-	prose:
-		"Currently going deep on Go and backend systems, most recently shipping a Redis-backed API built to serve 2 million users with zero errors.",
-};
+export const aboutChapters: AboutChapter[] = [
+	{
+		key: "frontend",
+		label: "Since the start",
+		heading: "Years in the browser.",
+		body: "React, Next.js, and Tailwind have been the constant since day one.",
+		tags: ["React", "Next.js", "Tailwind"],
+	},
+	{
+		key: "backend",
+		label: "Lately",
+		heading: "Now going deep.",
+		body: "Go, system design, and databases are where my attention lives these days.",
+		tags: ["Go", "System Design", "Databases"],
+	},
+	{
+		key: "philosophy",
+		label: "How I think about it",
+		heading: "Built to survive contact.",
+		body: "A system isn't done when it works. It's done when it survives real traffic, bad input, and 3am failures.",
+		emphasis: "3am failures",
+	},
+	{
+		key: "personal",
+		label: "Off the clock",
+		heading: "Maps and stars.",
+		body: "Travel and astronomy are the two curiosities that never run out.",
+	},
+];
 
 export const experienceItems: ExperienceItem[] = [
 	{
