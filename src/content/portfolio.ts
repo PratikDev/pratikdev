@@ -3,8 +3,7 @@ import resumePdfUrl from "@/assets/pratik-resume.pdf?url";
 
 export type NavItem = {
 	id: "about" | "experience" | "projects" | "resume" | "contact";
-	frontendLabel: string;
-	backendLabel: string;
+	label: string;
 };
 
 export type ExperienceItem = {
@@ -15,6 +14,15 @@ export type ExperienceItem = {
 	end: string;
 	description: string;
 	stack: string[];
+};
+
+export type AboutChapter = {
+	key: string;
+	label: string;
+	heading: string;
+	body: string;
+	emphasis?: string;
+	tags?: string[];
 };
 
 export type ProjectType = "backend" | "fullstack";
@@ -59,32 +67,47 @@ export type ResumeItem = {
 };
 
 export const navItems: NavItem[] = [
-	{ id: "about", frontendLabel: "About", backendLabel: "GET /about" },
-	{
-		id: "experience",
-		frontendLabel: "Experience",
-		backendLabel: "GET /experience",
-	},
-	{ id: "projects", frontendLabel: "Projects", backendLabel: "GET /projects" },
-	{ id: "resume", frontendLabel: "Resume", backendLabel: "GET /resume" },
-	{ id: "contact", frontendLabel: "Contact", backendLabel: "POST /contact" },
+	{ id: "about", label: "About" },
+	{ id: "experience", label: "Experience" },
+	{ id: "projects", label: "Projects" },
+	{ id: "resume", label: "Resume" },
+	{ id: "contact", label: "Contact" },
 ];
 
 export const heroContent = {
-	headline:
-		"Fullstack engineer building production systems in Go, React, and TypeScript — 4+ years shipping across the whole stack.",
-	subheading:
-		"I build backend systems in Go and ship production interfaces in React — equally comfortable on either side of the stack.",
-	logLine:
-		`[${new Date().toISOString()}] INFO role="fullstack_engineer" status="open_to_work" focus="go_react_typescript"`,
+	headline: "Pratik Dev",
+	highlight: "Go, React, TypeScript.",
 };
 
-export const currentlyContent = {
-	prose:
-		"Deepening Go and backend systems knowledge — recently built a production-style URL shortener API, async job queue system, and a high-throughput Redis-backed result lookup API load tested at 31k+ RPS.",
-	logLine:
-		`[${new Date().toISOString()}] INFO currently="deepening_go_backend_systems" recent="result_lookup" topics=["redis","precompute_pipeline","high_throughput","load_testing","postgres_fallback","connection_limiting"]`,
-};
+export const aboutChapters: AboutChapter[] = [
+	{
+		key: "frontend",
+		label: "Since the start",
+		heading: "Years in the browser.",
+		body: "React, Next.js, and Tailwind have been the constant since day one.",
+		tags: ["React", "Next.js", "Tailwind"],
+	},
+	{
+		key: "backend",
+		label: "Lately",
+		heading: "Now going deep.",
+		body: "Go, system design, and databases are where my attention lives these days.",
+		tags: ["Go", "System Design", "Databases"],
+	},
+	{
+		key: "philosophy",
+		label: "How I think about it",
+		heading: "Built to survive contact.",
+		body: "A system isn't done when it works. It's done when it survives real traffic, bad input, and 3am failures.",
+		emphasis: "3am failures",
+	},
+	{
+		key: "personal",
+		label: "Off the clock",
+		heading: "Maps and stars.",
+		body: "Travel and astronomy are the two curiosities that never run out.",
+	},
+];
 
 export const experienceItems: ExperienceItem[] = [
 	{
@@ -158,7 +181,7 @@ export const projectSections: ProjectSection[] = [
 				name: "Narrative Guard",
 				slug: "narrative-guard",
 				description:
-					"AI brand voice coherence agent. Audits content against brand guidelines before publishing.",
+					"An AI agent that audits content against your brand guidelines before it publishes.",
 				stack: ["Next.js", "Convex", "Gemini"],
 				status: "shipped",
 				type: "fullstack",
@@ -169,7 +192,7 @@ export const projectSections: ProjectSection[] = [
 				name: "Roadmap App",
 				slug: "roadmap-app",
 				description:
-					"Full-stack roadmap tool with upvoting, filtering, sorting, and comments.",
+					"A roadmap tool people can vote on, filter, sort, and discuss.",
 				stack: ["Next.js", "Drizzle", "PostgreSQL"],
 				status: "shipped",
 				type: "fullstack",
@@ -177,10 +200,10 @@ export const projectSections: ProjectSection[] = [
 				source: "https://github.com/pratikDev/roadmap-app"
 			},
 			{
-				name: "Kar Communication",
-				slug: "kar-communication",
+				name: "Kar Comm",
+				slug: "kar-comm",
 				description:
-					"Landing page with dynamic content for an IT solutions company.",
+					"Dynamic landing page for an IT solutions company, built on Next.js and Firebase.",
 				stack: ["Next.js", "Firebase", "React Query"],
 				status: "shipped",
 				type: "frontend",
@@ -196,37 +219,37 @@ export const projectSections: ProjectSection[] = [
 				name: "Result Lookup",
 				slug: "result-lookup",
 				description:
-					"High-throughput exam result API simulating Bangladesh's SSC like result publishing infrastructure — 31,910 RPS peak on a single instance, zero errors",
+					"An exam result API built to serve 2 million users on a single instance with zero errors.",
 				stack: ["Go", "PostgreSQL", "Redis", "pgx/v5", "Docker"],
 				status: "shipped",
 				type: "backend",
 				source: "https://github.com/PratikDev/result-lookup"
 			},
 			{
-				name: "URL Health Checker",
-				slug: "url-health-checker",
+				name: "URL Health",
+				slug: "url-health",
 				description:
-					"Background job queue in Go — URL health checker with worker-based processing, retry logic, and exponential backoff.",
+					"A Go job queue that checks URL health with worker-based processing, retries, and exponential backoff.",
 				stack: ["Go", "PostgreSQL", "pgx/v5", "Docker"],
 				status: "shipped",
 				type: "backend",
 				source: "https://github.com/PratikDev/url-health-checker"
 			},
 			{
-				name: "URL Shortener (Go rebuild)",
+				name: "URL Shortener",
 				slug: "url-shortener-go-rebuild",
 				description:
-					"Production-style API with structured logging (slog), pgxpool, Docker multi-stage builds, schema migrations.",
+					"A URL shortener rebuilt in Go with structured logging, connection pooling, and schema migrations.",
 				stack: ["Go", "PostgreSQL", "pgxpool", "Docker", "slog"],
 				status: "learning",
 				type: "backend",
 				source: "https://github.com/PratikDev/url-shortener-api"
 			},
 			{
-				name: "The Super Tiny Compiler",
-				slug: "the-super-tiny-compiler",
+				name: "Tiny Compiler",
+				slug: "tiny-compiler",
 				description:
-					"Minimal compiler built from scratch in Go, covering tokenizing, parsing, and transformation.",
+					"A minimal compiler built from scratch in Go that tokenizes, parses, and transforms source code.",
 				stack: ["Go", "Compiler basics", "Parsing"],
 				status: "learning",
 				type: "systems",
@@ -236,7 +259,7 @@ export const projectSections: ProjectSection[] = [
 				name: "URL Scraper",
 				slug: "url-scraper",
 				description:
-					"Terminal-based concurrent URL scraper using goroutines and mutex locks.",
+					"A concurrent URL scraper in Go, built with goroutines and mutex locks.",
 				stack: ["Go", "Goroutines", "Mutexes", "CLI"],
 				status: "learning",
 				type: "cli",
@@ -303,7 +326,7 @@ export const resumeItems: ResumeItem[] = [
 		format: "PDF",
 		href: resumePdfUrl,
 		fileName: "pratik-resume.pdf",
-		description: "Polished resume version for recruiters, hiring managers, and quick sharing.",
+		description: "For recruiters and quick sharing.",
 	},
 	{
 		key: "markdown",
@@ -311,6 +334,6 @@ export const resumeItems: ResumeItem[] = [
 		format: "Markdown",
 		href: resumeMarkdownUrl,
 		fileName: "pratik-resume.md",
-		description: "Plain-text resume source for terminals, agents, and easy parsing.",
+		description: "Plain text, easy to parse.",
 	},
 ];
