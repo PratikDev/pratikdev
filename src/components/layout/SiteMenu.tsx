@@ -38,8 +38,8 @@ export function SiteMenu() {
 				const id = item.link.replace("#", "");
 				scrollToPanel(PANEL_ORDER.indexOf(resolvePanelId(id)));
 			}}
-			onMenuOpen={() => setInputLocked(true)}
-			onMenuClose={() => setInputLocked(false)}
+			onMenuOpen={() => setInputLocked("menu", true)}
+			onMenuClose={() => setInputLocked("menu", false)}
 		/>
 	);
 }

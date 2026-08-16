@@ -126,8 +126,14 @@ export function ScrollStageProvider({ children }: ScrollStageProviderProps) {
 	);
 
 	const inputLockedRef = React.useRef(false);
-	const setInputLocked = React.useCallback((locked: boolean) => {
-		inputLockedRef.current = locked;
+	const lockReasonsRef = React.useRef<Set<string>>(new Set());
+	const setInputLocked = React.useCallback((reason: string, locked: boolean) => {
+		if (locked) {
+			lockReasonsRef.current.add(reason);
+		} else {
+			lockReasonsRef.current.delete(reason);
+		}
+		inputLockedRef.current = lockReasonsRef.current.size > 0;
 	}, []);
 
 	const activeIndexRef = React.useRef(activeIndex);
