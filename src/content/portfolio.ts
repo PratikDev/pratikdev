@@ -226,8 +226,8 @@ export const projectSections: ProjectSection[] = [
 				source: "https://github.com/PratikDev/result-lookup"
 			},
 			{
-				name: "URL Health Checker",
-				slug: "url-health-checker",
+				name: "URL Health",
+				slug: "url-health",
 				description:
 					"A Go job queue that checks URL health with worker-based processing, retries, and exponential backoff.",
 				stack: ["Go", "PostgreSQL", "pgx/v5", "Docker"],
@@ -246,8 +246,8 @@ export const projectSections: ProjectSection[] = [
 				source: "https://github.com/PratikDev/url-shortener-api"
 			},
 			{
-				name: "The Super Tiny Compiler",
-				slug: "the-super-tiny-compiler",
+				name: "Tiny Compiler",
+				slug: "tiny-compiler",
 				description:
 					"A minimal compiler built from scratch in Go that tokenizes, parses, and transforms source code.",
 				stack: ["Go", "Compiler basics", "Parsing"],
