@@ -1,6 +1,7 @@
 import StaggeredMenu from "@/components/ui/StaggeredMenu";
 import { contactLinks, navItems } from "@/content/portfolio";
-import { useScrollStage } from "@/hooks/use-scroll-stage";
+// import { useScrollStage } from "@/hooks/use-scroll-stage";
+import { useScrollStage } from "@/components/layout/ScrollStageV2";
 import { PANEL_ORDER, PROJECT_PANEL_IDS, type PanelId } from "@/lib/panels";
 
 const menuItems = navItems.map((item) => ({
@@ -19,7 +20,7 @@ function resolvePanelId(navId: string): PanelId {
 }
 
 export function SiteMenu() {
-	const { scrollToPanel, setInputLocked } = useScrollStage();
+	const { goTo: scrollToPanel, setInputLocked } = useScrollStage();
 
 	return (
 		<StaggeredMenu
