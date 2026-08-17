@@ -2,7 +2,7 @@ import {
 	ScrollStage,
 	useScrollStage,
 	type ApplyStepContext,
-} from "@/components/layout/ScrollStageV2";
+} from "@/components/layout/ScrollStage";
 import { gsap } from "@/lib/gsap";
 import { usePanelRequest } from "@/lib/panel-navigation";
 

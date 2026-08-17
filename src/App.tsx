@@ -1,12 +1,12 @@
 import { SiteMenu } from "@/components/layout/SiteMenu";
-import { AboutSection } from "@/components/portfolio/AboutSectionV2";
+import { AboutSection } from "@/components/portfolio/AboutSection";
 import { ContactSection } from "@/components/portfolio/ContactSection";
 import { ExperienceSection } from "@/components/portfolio/ExperienceSection";
 import { HeroSection } from "@/components/portfolio/HeroSection";
 import { ResumeSection } from "@/components/portfolio/ResumeSection";
 import { SkillsSection } from "@/components/portfolio/SkillsSection";
 import ShapeGrid from "@/components/ui/ShapeGrid";
-import { ScrollStage, useScrollStage } from "./components/layout/ScrollStageV2";
+import { ScrollStage, useScrollStage } from "./components/layout/ScrollStage";
 import { HeroAboutZoomStage } from "./components/portfolio/Intro/HeroAboutZoomStage";
 import { ProjectsSection } from "./components/portfolio/ProjectsSection";
 import { PANEL_ORDER } from "./lib/panels";

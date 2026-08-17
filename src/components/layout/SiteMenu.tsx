@@ -1,4 +1,4 @@
-import { useScrollStage } from "@/components/layout/ScrollStageV2";
+import { useScrollStage } from "@/components/layout/ScrollStage";
 import StaggeredMenu from "@/components/ui/StaggeredMenu";
 import { contactLinks, navItems } from "@/content/portfolio";
 import { requestPanel } from "@/lib/panel-navigation";

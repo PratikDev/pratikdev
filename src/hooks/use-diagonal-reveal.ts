@@ -1,7 +1,7 @@
 import { useGSAP } from "@gsap/react";
 import * as React from "react";
 
-import { useScrollStage } from "@/components/layout/ScrollStageV2";
+import { useScrollStage } from "@/components/layout/ScrollStage";
 import { useReducedMotion } from "@/hooks/use-reduced-motion";
 import { gsap } from "@/lib/gsap";
 import { PANEL_ORDER, type PanelId } from "@/lib/panels";
