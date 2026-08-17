@@ -1,7 +1,7 @@
 import * as React from "react";
 
 // import { useScrollStage } from "@/hooks/use-scroll-stage";
-import { useScrollStage } from "@/components/layout/ScrollStageV2";
+import { useScrollStage } from "@/components/layout/ScrollStage";
 
 /* -------------------------------------------------------------------------
  * useStageInputLock
