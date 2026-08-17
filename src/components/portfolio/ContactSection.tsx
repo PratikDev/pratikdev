@@ -54,8 +54,8 @@ export function ContactSection() {
 					<a
 						key={item.key}
 						href={item.href}
-						target={item.key === "email" ? undefined : "_blank"}
-						rel={item.key === "email" ? undefined : "noreferrer"}
+						target={"_blank"}
+						rel={"noreferrer"}
 						className="contact-link items-center gap-4 p-6 shadow-md"
 					>
 						<ContactIcon item={item} />

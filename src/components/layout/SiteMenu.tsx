@@ -24,6 +24,8 @@ function resolvePanelId(navId: string): PanelId {
 	return navId as PanelId;
 }
 
+const DARK_SCREEN_PANEL_INDEXES = [1, 2];
+
 export function SiteMenu() {
 	const { goTo, setInputLocked, activeIndex } = useScrollStage();
 
@@ -35,7 +37,11 @@ export function SiteMenu() {
 			displaySocials
 			displayItemNumbering
 			isFixed
-			menuButtonColor={activeIndex === 1 ? "#fff" : "#0e0d0c"}
+			menuButtonColor={
+				DARK_SCREEN_PANEL_INDEXES.indexOf(activeIndex) !== -1
+					? "#fff"
+					: "#0e0d0c"
+			}
 			openMenuButtonColor="#e8380d"
 			changeMenuColorOnOpen
 			colors={["#fdeee8", "#e8380d"]}
