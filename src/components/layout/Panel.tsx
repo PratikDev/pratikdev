@@ -39,7 +39,7 @@ export const Panel = React.forwardRef<HTMLElement, PanelProps>(function Panel(
 					{title ? (
 						<div className="mb-10 max-w-6xl shrink-0">
 							{eyebrow ? <p className="eyebrow mb-5">{eyebrow}</p> : null}
-							<h2 className="text-(length:--text-display) leading-[0.9] font-semibold tracking-tight text-foreground">
+							<h2 className="text-(length:--text-display) leading-[0.9] font-semibold tracking-tight">
 								{title}
 							</h2>
 						</div>

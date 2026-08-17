@@ -17,7 +17,7 @@ const ABOUT_STEP = 1;
 const ZOOM_PHASE_END = 0.6;
 
 // transition config
-const HERO_SCALE = 40;
+const HERO_SCALE = 32;
 
 /**
  * Where the zoom scales FROM/TOWARD, in viewport-relative pixels — set by
@@ -73,11 +73,6 @@ function heroAboutApplyStep({
 			},
 			0,
 		);
-		tl.to(
-			hero,
-			{ opacity: 0, ease: "power1.in", duration: 1 - ZOOM_PHASE_END },
-			ZOOM_PHASE_END,
-		);
 		// Phase 2 (ZOOM_PHASE_END -> 1): only once Hero has passed, About fades in.
 		tl.fromTo(
 			about,
@@ -95,7 +90,7 @@ function heroAboutApplyStep({
 		);
 		tl.fromTo(
 			hero,
-			{ scale: HERO_SCALE, opacity: 0, transformOrigin: origin },
+			{ scale: HERO_SCALE, transformOrigin: origin },
 			{
 				scale: 1,
 				opacity: 1,

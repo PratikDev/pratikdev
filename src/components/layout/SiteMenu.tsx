@@ -25,7 +25,7 @@ function resolvePanelId(navId: string): PanelId {
 }
 
 export function SiteMenu() {
-	const { goTo, setInputLocked } = useScrollStage();
+	const { goTo, setInputLocked, activeIndex } = useScrollStage();
 
 	return (
 		<StaggeredMenu
@@ -35,7 +35,7 @@ export function SiteMenu() {
 			displaySocials
 			displayItemNumbering
 			isFixed
-			menuButtonColor="#0e0d0c"
+			menuButtonColor={activeIndex === 1 ? "#fff" : "#0e0d0c"}
 			openMenuButtonColor="#e8380d"
 			changeMenuColorOnOpen
 			colors={["#fdeee8", "#e8380d"]}
