@@ -26,7 +26,9 @@ function renderBody(body: string, emphasis?: string) {
 	return (
 		<>
 			{body.slice(0, index)}
-			<span className="text-primary">{emphasis}</span>
+			<span className="text-primary font-heading text-shadow-lg/100">
+				{emphasis}
+			</span>
 			{body.slice(index + emphasis.length)}
 		</>
 	);
