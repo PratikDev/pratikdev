@@ -1,4 +1,4 @@
-import { motion, type Easing } from "framer-motion";
+import { motion, type Easing } from "motion/react";
 import React, {
 	useCallback,
 	useEffect,
