@@ -2,7 +2,7 @@ import { useScrollStage } from "@/components/layout/ScrollStage";
 import StaggeredMenu from "@/components/ui/StaggeredMenu";
 import { contactLinks, navItems } from "@/content/portfolio";
 import { requestPanel } from "@/lib/panel-navigation";
-import { PANEL_ORDER, PROJECT_PANEL_IDS, type PanelId } from "@/lib/panels";
+import { PANEL_ORDER, type PanelId } from "@/lib/panels";
 
 const menuItems = navItems.map((item) => ({
 	label: item.label,
@@ -16,7 +16,6 @@ const socialItems = contactLinks.map((item) => ({
 }));
 
 function resolvePanelId(navId: string): PanelId {
-	if (navId === "projects") return PROJECT_PANEL_IDS[0];
 	// Hero and About collapsed into one root-level slot (HeroAboutZoomStage);
 	// both nav ids now resolve to that combined "intro" step.
 	if (navId === "hero" || navId === "top" || navId === "about")
