@@ -16,6 +16,19 @@ const ABOUT_STEP = 1;
 // sequence, not two things crossfading simultaneously.
 const ZOOM_PHASE_END = 0.6;
 
+// transition config
+const HERO_SCALE = 40;
+
+/**
+ * Where the zoom scales FROM/TOWARD, in viewport-relative pixels — set by
+ * HeroSection after measuring the actual on-screen position of the "P"
+ * glyph's counter, not a fixed guess. Falls back to the panel's own center
+ * until that measurement has run once. Panel is `inset-0` (fills the
+ * viewport exactly), so viewport-relative coordinates ARE panel-relative
+ * coordinates — no extra offset math needed here.
+ */
+export const heroZoomOrigin = { x: "50%", y: "50%" };
+
 function heroAboutApplyStep({
 	panels,
 	fromIndex,
@@ -28,6 +41,7 @@ function heroAboutApplyStep({
 
 	const enteringAbout = index === ABOUT_STEP && fromIndex === HERO_STEP;
 	const leavingAbout = index === HERO_STEP && fromIndex === ABOUT_STEP;
+	const origin = `${heroZoomOrigin.x} ${heroZoomOrigin.y}`;
 
 	if (!animate) {
 		// Silent positioning (e.g. re-entering this stage later): snap straight
@@ -35,6 +49,7 @@ function heroAboutApplyStep({
 		gsap.set(hero, {
 			scale: index === HERO_STEP ? 1 : 6,
 			opacity: index === HERO_STEP ? 1 : 0,
+			transformOrigin: origin,
 		});
 		gsap.set(about, { opacity: index === ABOUT_STEP ? 1 : 0 });
 		return;
@@ -43,12 +58,25 @@ function heroAboutApplyStep({
 	const tl = gsap.timeline();
 
 	if (enteringAbout) {
-		// Phase 1 (0 -> ZOOM_PHASE_END): push through the Hero headline —
-		// scale it up until it's passed the screen, fading as it goes.
+		// Phase 1 (0 -> ZOOM_PHASE_END): push through the Hero headline by
+		// scaling it up until it's passed the screen. Keep the opacity fade
+		// separate so it starts only after the zoom has finished.
+		// transformOrigin is set (not animated) at the start of this tween —
+		// it needs to already be correct before scale starts moving.
 		tl.to(
 			hero,
-			{ scale: 6, opacity: 0, ease: "power1.in", duration: ZOOM_PHASE_END },
+			{
+				scale: HERO_SCALE,
+				transformOrigin: origin,
+				ease: "power1.in",
+				duration: ZOOM_PHASE_END,
+			},
 			0,
+		);
+		tl.to(
+			hero,
+			{ opacity: 0, ease: "power1.in", duration: 1 - ZOOM_PHASE_END },
+			ZOOM_PHASE_END,
 		);
 		// Phase 2 (ZOOM_PHASE_END -> 1): only once Hero has passed, About fades in.
 		tl.fromTo(
@@ -67,8 +95,14 @@ function heroAboutApplyStep({
 		);
 		tl.fromTo(
 			hero,
-			{ scale: 6, opacity: 0 },
-			{ scale: 1, opacity: 1, ease: "power1.out", duration: ZOOM_PHASE_END },
+			{ scale: HERO_SCALE, opacity: 0, transformOrigin: origin },
+			{
+				scale: 1,
+				opacity: 1,
+				transformOrigin: origin,
+				ease: "power1.out",
+				duration: ZOOM_PHASE_END,
+			},
 			1 - ZOOM_PHASE_END,
 		);
 	}
