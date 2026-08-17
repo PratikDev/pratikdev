@@ -49,6 +49,7 @@
 	--radius-2xl: calc(var(--radius) * 1.8);
 	--radius-3xl: calc(var(--radius) * 2.2);
 	--radius-4xl: calc(var(--radius) * 2.6);
+	--shadow-shadow: var(--shadow);
 }
 
 :root {
@@ -105,7 +106,7 @@
 	--chart-3: #67615d;
 	--chart-4: #b6aaa3;
 	--chart-5: #f0d8cd;
-	--radius: var(--site-radius-card);
+	--radius: 0.625rem;
 	--sidebar: var(--site-card);
 	--sidebar-foreground: var(--site-card-fg);
 	--sidebar-primary: var(--site-accent);
@@ -114,6 +115,7 @@
 	--sidebar-accent-foreground: var(--site-secondary-accent);
 	--sidebar-border: var(--site-border);
 	--sidebar-ring: var(--ring);
+	--shadow: 16px 16px 0px 0px var(--border);
 }
 
 @layer base {
@@ -172,9 +174,9 @@
 	}
 
 	.site-card {
-		@apply bg-secondary text-card-foreground;
+		@apply bg-secondary/50 text-card-foreground backdrop-blur-2xl;
 		border: 3px solid var(--site-accent);
-		border-radius: var(--site-radius-card);
+		/* border-radius: var(--site-radius-card); */
 		padding: clamp(1.25rem, 2vw, 2rem);
 	}
 

@@ -98,8 +98,8 @@ export const aboutChapters: AboutChapter[] = [
 		key: "philosophy",
 		label: "How I think about it",
 		heading: "Built to survive contact.",
-		body: "A system isn't done when it works. It's done when it survives real traffic, bad input, and 3am failures.",
-		emphasis: "3am failures",
+		body: "A system isn't done when it works. It's done when it survives real traffic, bad input, and 3AM failures.",
+		emphasis: "3AM failures",
 	},
 	{
 		key: "personal",
