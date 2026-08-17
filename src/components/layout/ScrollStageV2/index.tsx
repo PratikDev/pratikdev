@@ -13,6 +13,13 @@ import {
 	type ScrollEngine,
 } from "./use-scroll-engine";
 
+/**
+ * Visual transform axis for the stage. Distinct from NavigationAxis (which
+ * only governs wheel/key input mapping) — "zoom" isn't a meaningful
+ * navigation direction, it's purely about how a step is rendered.
+ */
+export type StageAxis = ScrollAxis | "zoom";
+
 /* -------------------------------------------------------------------------
  * ScrollStage
  * -------------------------------------------------------------------------
@@ -23,8 +30,10 @@ import {
  *   </ScrollStage.Track>
  * </ScrollStage>
  *
- * - `axis` picks the visual transform direction (translateX for "x",
- *   translateY for "y"). `navAxis` picks which wheel/keys drive next/prev —
+ * - `axis` picks the visual transform: translateX ("x"), translateY ("y"),
+ *   or a stacked, non-sliding "zoom" layout where panels overlap and you
+ *   supply (or use the default) per-panel scale/opacity transitions instead
+ *   of movement. `navAxis` picks which wheel/keys drive next/prev —
  *   defaults to "all", so every arrow key and either wheel axis works
  *   regardless of which way the panels actually move. Pass "x"/"y" for
  *   `navAxis` to restrict input to just that axis instead.
@@ -44,8 +53,18 @@ import {
  * ---------------------------------------------------------------------- */
 
 interface ScrollStageContextValue extends ScrollEngine {
-	axis: ScrollAxis;
+	axis: StageAxis;
 	stepCount: number;
+	/**
+	 * Whether THIS stage instance is currently active (its own `active` prop,
+	 * combined with reduced-motion). Doesn't mean the stage's activeIndex is
+	 * "correct" in any sense — a stage's activeIndex holds whatever it last
+	 * was even after the stage itself goes inactive. A descendant checking
+	 * only `activeIndex === someStep` without also checking `active` here
+	 * can end up believing it's still "active" long after its containing
+	 * stage has moved away from it entirely.
+	 */
+	active: boolean;
 	setInputLocked: (reason: string, locked: boolean) => void;
 	/**
 	 * Subscribe to a continuously-updating step position (e.g. 1.4 while
@@ -78,8 +97,10 @@ function useAmbientScrollStage(): ScrollStageContextValue | null {
 
 interface TrackContextValue {
 	trackRef: React.MutableRefObject<HTMLDivElement | null>;
-	axis: ScrollAxis;
+	axis: StageAxis;
 	registerStepCount: (count: number) => void;
+	/** Only used for axis="zoom" — each child's own DOM node, in step order, so applyStep can address individual panels. */
+	panelRefs: React.MutableRefObject<Array<HTMLDivElement | null>>;
 }
 
 const ScrollStageTrackContext = React.createContext<TrackContextValue | null>(
@@ -104,9 +125,23 @@ function mergeRefs<T>(...refs: Array<React.Ref<T> | undefined>) {
 const STEP_DURATION = 1;
 const STEP_EASE = "power2.inOut";
 
+/** Passed to `applyStep` on every step change — enough context for x/y, zoom, or anything custom. */
+export interface ApplyStepContext {
+	/** The Track container itself. Always present. */
+	track: HTMLDivElement;
+	/** Each panel's own DOM node, in step order. Only populated for axis="zoom" (x/y panels aren't individually wrapped). */
+	panels: Array<HTMLDivElement | null>;
+	fromIndex: number;
+	index: number;
+	animate: boolean;
+}
+
 export interface ScrollStageProps extends React.ComponentPropsWithoutRef<"div"> {
-	/** Visual transform direction: which way Track's translate moves. */
-	axis?: ScrollAxis;
+	/**
+	 * Visual transform: "x"/"y" slide the whole Track; "zoom" stacks panels
+	 * on top of each other (no sliding) and calls applyStep per-panel instead.
+	 */
+	axis?: StageAxis;
 	/**
 	 * Which wheel directions / arrow keys trigger next/prev. Defaults to
 	 * "all" — every arrow key and either wheel axis advances/retreats,
@@ -145,20 +180,52 @@ export interface ScrollStageProps extends React.ComponentPropsWithoutRef<"div"> 
 	bubble?: boolean;
 	/**
 	 * Override how a step is visually applied. Defaults to translateX (axis
-	 * "x") or translateY (axis "y") on the Track element, sized to the
-	 * viewport. Supply your own for zoom (scale), diagonal (x AND y), or
-	 * anything else — this is the one place axis-specific visuals live.
+	 * "x"), translateY (axis "y"), or a crossfade+scale between the outgoing
+	 * and incoming panel (axis "zoom"). Supply your own for custom
+	 * choreography — this is the one place axis-specific visuals live.
 	 */
-	applyStep?: (track: HTMLDivElement, index: number, animate: boolean) => void;
+	applyStep?: (context: ApplyStepContext) => void;
 	onStep?: (
 		index: number,
-		meta: { direction: 1 | -1; animate: boolean },
+		meta: { fromIndex: number; direction: 1 | -1; animate: boolean },
 	) => void;
 }
 
-const defaultApplyStep =
-	(axis: ScrollAxis) =>
-	(track: HTMLDivElement, index: number, animate: boolean) => {
+const defaultApplyStep: (
+	axis: StageAxis,
+) => (context: ApplyStepContext) => void = (axis) => {
+	if (axis === "zoom") {
+		return ({ panels, fromIndex, index, animate }) => {
+			const outgoing = panels[fromIndex];
+			const incoming = panels[index];
+			if (outgoing && outgoing !== incoming) {
+				if (animate) {
+					gsap.to(outgoing, {
+						opacity: 0,
+						scale: 1.08,
+						duration: STEP_DURATION,
+						ease: STEP_EASE,
+					});
+				} else {
+					gsap.set(outgoing, { opacity: 0, scale: 1.08 });
+				}
+			}
+			if (incoming) {
+				if (animate) {
+					gsap.to(incoming, {
+						opacity: 1,
+						scale: 1,
+						duration: STEP_DURATION,
+						ease: STEP_EASE,
+					});
+				} else {
+					gsap.set(incoming, { opacity: 1, scale: 1 });
+				}
+			}
+		};
+	}
+
+	return ({ track, index, animate }) => {
 		const size = axis === "x" ? window.innerWidth : window.innerHeight;
 		const vars = axis === "x" ? { x: -index * size } : { y: -index * size };
 		if (animate) {
@@ -167,6 +234,7 @@ const defaultApplyStep =
 			gsap.set(track, vars);
 		}
 	};
+};
 
 const ScrollStageInner = React.forwardRef<HTMLDivElement, ScrollStageProps>(
 	(
@@ -218,6 +286,7 @@ const ScrollStageInner = React.forwardRef<HTMLDivElement, ScrollStageProps>(
 		}, [parentStage, active]);
 
 		const trackRef = React.useRef<HTMLDivElement | null>(null);
+		const panelRefs = React.useRef<Array<HTMLDivElement | null>>([]);
 		const [measuredStepCount, setMeasuredStepCount] = React.useState(0);
 		const stepCount = stepCountProp ?? measuredStepCount;
 
@@ -258,7 +327,15 @@ const ScrollStageInner = React.forwardRef<HTMLDivElement, ScrollStageProps>(
 			activationGraceMs,
 			onStep: (index, meta) => {
 				const track = trackRef.current;
-				if (track) applyStepRef.current(track, index, meta.animate);
+				if (track) {
+					applyStepRef.current({
+						track,
+						panels: panelRefs.current,
+						fromIndex: meta.fromIndex,
+						index,
+						animate: meta.animate,
+					});
+				}
 
 				// Broadcast continuous progress separately from the visual
 				// transform itself, so this works even with a custom applyStep
@@ -284,19 +361,34 @@ const ScrollStageInner = React.forwardRef<HTMLDivElement, ScrollStageProps>(
 				: undefined,
 		});
 
+		const isEffectivelyActive = active && !reducedMotion;
+
 		const contextValue = React.useMemo<ScrollStageContextValue>(
 			() => ({
 				...engine,
 				axis,
 				stepCount,
+				active: isEffectivelyActive,
 				setInputLocked,
 				subscribeContinuousIndex,
 			}),
-			[engine, axis, stepCount, setInputLocked, subscribeContinuousIndex],
+			[
+				engine,
+				axis,
+				stepCount,
+				isEffectivelyActive,
+				setInputLocked,
+				subscribeContinuousIndex,
+			],
 		);
 
 		const trackContextValue = React.useMemo<TrackContextValue>(
-			() => ({ trackRef, axis, registerStepCount: setMeasuredStepCount }),
+			() => ({
+				trackRef,
+				axis,
+				registerStepCount: setMeasuredStepCount,
+				panelRefs,
+			}),
 			[axis],
 		);
 
@@ -348,10 +440,41 @@ const ScrollStageTrack = React.forwardRef<
 		throw new Error("ScrollStage.Track must be used inside a <ScrollStage>.");
 	}
 
-	const childCount = React.Children.count(children);
+	const childArray = React.Children.toArray(children);
+	const childCount = childArray.length;
 	React.useEffect(() => {
 		ctx.registerStepCount(childCount);
 	}, [childCount, ctx]);
+
+	if (!reducedMotion && ctx.axis === "zoom") {
+		return (
+			<div
+				ref={mergeRefs(ctx.trackRef, ref)}
+				className={cn("relative h-full w-full", className)}
+				{...rest}
+			>
+				{childArray.map((child, i) => (
+					<div
+						key={i}
+						ref={(node) => {
+							ctx.panelRefs.current[i] = node;
+						}}
+						className="absolute inset-0 h-full w-full"
+						// Matches the default zoom applyStep's "hidden" state (opacity
+						// 0, scale 1.08) so there's no flash of every panel stacked
+						// fully visible before the first transition runs. A custom
+						// applyStep with a different hidden state will briefly
+						// mismatch on first paint — minor, and only until step one.
+						style={
+							i === 0 ? undefined : { opacity: 0, transform: "scale(1.08)" }
+						}
+					>
+						{child}
+					</div>
+				))}
+			</div>
+		);
+	}
 
 	return (
 		<div

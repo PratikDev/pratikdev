@@ -1,7 +1,7 @@
+import { useScrollStage } from "@/components/layout/ScrollStageV2";
 import StaggeredMenu from "@/components/ui/StaggeredMenu";
 import { contactLinks, navItems } from "@/content/portfolio";
-// import { useScrollStage } from "@/hooks/use-scroll-stage";
-import { useScrollStage } from "@/components/layout/ScrollStageV2";
+import { requestPanel } from "@/lib/panel-navigation";
 import { PANEL_ORDER, PROJECT_PANEL_IDS, type PanelId } from "@/lib/panels";
 
 const menuItems = navItems.map((item) => ({
@@ -16,11 +16,16 @@ const socialItems = contactLinks.map((item) => ({
 }));
 
 function resolvePanelId(navId: string): PanelId {
-	return navId === "projects" ? PROJECT_PANEL_IDS[0] : (navId as PanelId);
+	if (navId === "projects") return PROJECT_PANEL_IDS[0];
+	// Hero and About collapsed into one root-level slot (HeroAboutZoomStage);
+	// both nav ids now resolve to that combined "intro" step.
+	if (navId === "hero" || navId === "top" || navId === "about")
+		return "intro" as PanelId;
+	return navId as PanelId;
 }
 
 export function SiteMenu() {
-	const { goTo: scrollToPanel, setInputLocked } = useScrollStage();
+	const { goTo, setInputLocked } = useScrollStage();
 
 	return (
 		<StaggeredMenu
@@ -37,7 +42,13 @@ export function SiteMenu() {
 			accentColor="#e8380d"
 			onItemClick={(item) => {
 				const id = item.link.replace("#", "");
-				scrollToPanel(PANEL_ORDER.indexOf(resolvePanelId(id)));
+				goTo(PANEL_ORDER.indexOf(resolvePanelId(id)));
+				// Broadcast the RAW id (not the resolved root-level one) — any
+				// nested stage down the tree (the zoom stage, About's own
+				// chapter stage) that knows how to position itself for this
+				// specific id can react, independently of how many root-level
+				// slots it maps to. Not a PanelId — see panel-navigation.ts.
+				requestPanel(id);
 			}}
 			onMenuOpen={() => setInputLocked("menu", true)}
 			onMenuClose={() => setInputLocked("menu", false)}

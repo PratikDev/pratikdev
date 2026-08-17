@@ -1,7 +1,3 @@
-// import {
-// 	ScrollStageProvider,
-// 	ScrollTrack,
-// } from "@/components/layout/ScrollStage";
 import { SiteMenu } from "@/components/layout/SiteMenu";
 import { AboutSection } from "@/components/portfolio/AboutSectionV2";
 import { ContactSection } from "@/components/portfolio/ContactSection";
@@ -10,9 +6,36 @@ import { HeroSection } from "@/components/portfolio/HeroSection";
 import { ResumeSection } from "@/components/portfolio/ResumeSection";
 import { SkillsSection } from "@/components/portfolio/SkillsSection";
 import ShapeGrid from "@/components/ui/ShapeGrid";
-import { ScrollStage } from "./components/layout/ScrollStageV2";
+import { ScrollStage, useScrollStage } from "./components/layout/ScrollStageV2";
+import { HeroAboutZoomStage } from "./components/portfolio/Intro/HeroAboutZoomStage";
 import { ProjectsSection } from "./components/portfolio/ProjectsSection";
 import { PANEL_ORDER } from "./lib/panels";
+
+const INTRO_INDEX = PANEL_ORDER.indexOf("intro");
+
+// Everything that needs to read the root stage's activeIndex has to live
+// INSIDE <ScrollStage>, not alongside it — App itself renders the provider,
+// so useScrollStage() isn't available at that level yet.
+function SiteTrack() {
+	const { activeIndex } = useScrollStage();
+
+	return (
+		<>
+			<SiteMenu />
+			<ScrollStage.Track>
+				<HeroAboutZoomStage active={activeIndex === INTRO_INDEX}>
+					<HeroSection />
+					<AboutSection />
+				</HeroAboutZoomStage>
+				<ExperienceSection />
+				<ProjectsSection />
+				<SkillsSection />
+				<ResumeSection />
+				<ContactSection />
+			</ScrollStage.Track>
+		</>
+	);
+}
 
 export default function App() {
 	return (
@@ -35,16 +58,7 @@ export default function App() {
 				stepCount={PANEL_ORDER.length}
 				className="h-screen w-screen"
 			>
-				<SiteMenu />
-				<ScrollStage.Track>
-					<HeroSection />
-					<AboutSection />
-					<ExperienceSection />
-					<ProjectsSection />
-					<SkillsSection />
-					<ResumeSection />
-					<ContactSection />
-				</ScrollStage.Track>
+				<SiteTrack />
 			</ScrollStage>
 		</div>
 	);

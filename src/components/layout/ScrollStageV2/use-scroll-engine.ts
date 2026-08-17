@@ -76,7 +76,7 @@ export interface UseScrollEngineOptions {
    */
   activationGraceMs?: number;
   /** Called whenever the active step changes. Apply your own transform here. */
-  onStep?: (index: number, meta: { direction: 1 | -1; animate: boolean }) => void;
+  onStep?: (index: number, meta: { fromIndex: number; direction: 1 | -1; animate: boolean }) => void;
   /**
    * Called instead of moving when an advance would go past the first/last
    * step (and `loop` is false). This is what a nested stage uses to bubble
@@ -166,7 +166,8 @@ export function useScrollEngine({
       const count = stepCountRef.current;
       if (count <= 0) return;
 
-      const direction: 1 | -1 = rawIndex >= indexRef.current ? 1 : -1;
+      const fromIndex = indexRef.current;
+      const direction: 1 | -1 = rawIndex >= fromIndex ? 1 : -1;
       let index = rawIndex;
 
       if (loopRef.current) {
@@ -190,7 +191,7 @@ export function useScrollEngine({
 
       indexRef.current = index;
       setActiveIndex(index);
-      onStepRef.current?.(index, { direction, animate });
+      onStepRef.current?.(index, { fromIndex, direction, animate });
     },
     [indexRef, loopRef, onBoundaryRef, onStepRef, stepCountRef, lockMsRef],
   );

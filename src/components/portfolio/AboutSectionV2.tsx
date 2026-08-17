@@ -5,13 +5,13 @@ import { ScrollStage, useScrollStage } from "@/components/layout/ScrollStageV2";
 import { aboutChapters } from "@/content/portfolio";
 import { useReducedMotion } from "@/hooks/use-reduced-motion";
 import { gsap } from "@/lib/gsap";
-import { PANEL_ORDER } from "@/lib/panels";
+import { usePanelRequest } from "@/lib/panel-navigation";
 import { cn } from "@/lib/utils";
 
-// Content-level lookup only — the stage itself never imports PANEL_ORDER.
-// This is just "which index in the main horizontal stage is 'about'", used
-// here purely to know when this section is the active one.
-const ABOUT_INDEX = PANEL_ORDER.indexOf("about");
+// Position within HeroAboutZoomStage specifically (Hero = 0, About = 1) —
+// not a lookup into PANEL_ORDER anymore, since About no longer has its own
+// top-level slot in the root sequence.
+const ABOUT_STEP = 1;
 const CHAPTER_COUNT = aboutChapters.length;
 
 // A squiggle-into-loop-into-arrowhead flourish, traced top to bottom as one
@@ -91,9 +91,14 @@ function Chapter({
  * not the outer horizontal one — there's no way to read both through the
  * same hook call at the same point in the tree.
  */
-function AboutStageBody({ mainIndex }: { mainIndex: number }) {
+function AboutStageBody({
+	mainIndex,
+	isActive,
+}: {
+	mainIndex: number;
+	isActive: boolean;
+}) {
 	const { activeIndex: chapterIndex, progress, goTo } = useScrollStage();
-	const isActive = mainIndex === ABOUT_INDEX;
 
 	const arrowRef = React.useRef<SVGPathElement | null>(null);
 	const arrowLengthRef = React.useRef(0);
@@ -138,13 +143,46 @@ function AboutStageBody({ mainIndex }: { mainIndex: number }) {
 	// commit. Splitting these across components would break that ordering.
 	const prevMainIndexRef = React.useRef(mainIndex);
 
+	// An explicit "About" nav click always means chapter 1, full stop — it
+	// shouldn't go through the entered-forward/backward heuristic below at
+	// all. That heuristic infers direction from whether mainIndex changed,
+	// but a menu click can land here with mainIndex UNCHANGED (you were
+	// already on About, left, and clicked About again) — in that case the
+	// heuristic sees no index change, infers "entered backward", and would
+	// silently pick the LAST chapter instead, overriding the explicit
+	// request. Setting this ref makes the intentional jump win.
+	const pendingChapterRef = React.useRef<number | null>(null);
+
+	usePanelRequest((id) => {
+		if (id !== "about") {
+			return;
+		}
+		if (isActive) {
+			// Already viewing About (on some other chapter) — jump directly.
+			// The effect below won't re-run for this case since neither
+			// isActive nor mainIndex is about to change, so it would never
+			// consume a pending ref set here. Animated: this panel is already
+			// on screen, so the vertical slide back to chapter 1 should be
+			// visible, not an instant snap.
+			goTo(0);
+		} else {
+			pendingChapterRef.current = 0;
+		}
+	});
+
 	React.useEffect(() => {
 		if (!isActive) {
 			return;
 		}
 
-		const enteredForward = mainIndex > prevMainIndexRef.current;
-		const start = enteredForward ? 0 : CHAPTER_COUNT - 1;
+		let start: number;
+		if (pendingChapterRef.current !== null) {
+			start = pendingChapterRef.current;
+			pendingChapterRef.current = null;
+		} else {
+			const enteredForward = mainIndex > prevMainIndexRef.current;
+			start = enteredForward ? 0 : CHAPTER_COUNT - 1;
+		}
 		goTo(start, { animate: false });
 	}, [isActive, mainIndex, goTo]);
 
@@ -211,11 +249,17 @@ function AboutStageBody({ mainIndex }: { mainIndex: number }) {
 
 export function AboutSection() {
 	const reducedMotion = useReducedMotion();
-	// Outer/main horizontal stage — read here, BEFORE entering the nested
-	// <ScrollStage axis="y"> below, since useScrollStage() always resolves
-	// to the nearest one in the tree.
-	const { activeIndex: mainIndex } = useScrollStage();
-	const isActive = mainIndex === ABOUT_INDEX;
+	// Nearest ancestor here is the zoom stage (HeroAboutZoomStage), not the
+	// root — this is a descendant of ScrollStage.Track inside that zoom
+	// group. `active` is the zoom stage's OWN active prop (is the intro
+	// group even the panel currently on screen), separate from
+	// `activeIndex` (which of Hero/About the zoom group is showing). Both
+	// are required: activeIndex alone stays === ABOUT_STEP forever once you
+	// last visited About, even after scrolling away to Experience — without
+	// the `active` check, About's chapter stage would believe itself still
+	// live and keep eating wheel input in the background indefinitely.
+	const { active: zoomActive, activeIndex: zoomIndex } = useScrollStage();
+	const isActive = zoomActive && zoomIndex === ABOUT_STEP;
 
 	if (reducedMotion) {
 		return (
@@ -246,7 +290,10 @@ export function AboutSection() {
 				active={isActive}
 				className="h-full w-full"
 			>
-				<AboutStageBody mainIndex={mainIndex} />
+				<AboutStageBody
+					mainIndex={zoomIndex}
+					isActive={isActive}
+				/>
 			</ScrollStage>
 		</Panel>
 	);

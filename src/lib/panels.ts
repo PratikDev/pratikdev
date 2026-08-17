@@ -11,8 +11,9 @@ export const PROJECT_PANEL_IDS = Array.from(
 );
 
 export const PANEL_ORDER = [
-	"top",
-	"about",
+	// "top",
+	// "about",
+	"intro",
 	"experience",
 	...PROJECT_PANEL_IDS,
 	"skills",
