@@ -114,6 +114,8 @@ export function ProjectsSection() {
 				/>
 
 				<div className="p-3 col-span-2 grid place-content-center">
+					<p className="eyebrow mb-3 ml-6 text-2xl">Selected Work</p>
+
 					<ProjectPanel
 						project={activeProject}
 						className=""
