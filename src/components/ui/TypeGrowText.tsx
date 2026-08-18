@@ -117,9 +117,21 @@ const DEFAULT_ELEMENT = "div";
 
 // ---------------------------------------------------------------------------
 
+// Internal implementation type — deliberately NOT PolymorphicProps<ElementType>.
+// Computing ComponentPropsWithoutRef<C> with C = the full ElementType union
+// distributes over ElementType's `ComponentType<any>` branch, and `any` in a
+// union absorbs everything (X | any = any) — so `rest` below would silently
+// type as `any` instead of a real prop shape. HTMLAttributes<HTMLElement> is
+// concrete (no generic, nothing for `any` to leak in through), so `rest`
+// stays properly typed. The precise per-`as`-value typing consumers actually
+// see is handled separately, at the export boundary, by TypeGrowTextComponent.
+type TypeGrowTextInternalProps = TypeGrowOwnProps &
+	AsProp<ElementType> &
+	React.HTMLAttributes<HTMLElement>;
+
 const TypeGrowTextInner = React.forwardRef<
 	HTMLElement,
-	PolymorphicProps<ElementType>
+	TypeGrowTextInternalProps
 >(({ as, children, config, ...rest }, ref) => {
 	const {
 		targetFontSize,
