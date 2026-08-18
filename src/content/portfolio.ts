@@ -281,9 +281,9 @@ export const skillGroups: SkillGroup[] = [
 		skills: ["React", "Next.js", "TypeScript", "Tailwind", "ShadcnUI"],
 	},
 	{
-		label: "Backend & infra",
+		label: "Backend & Databases",
 		key: "backend",
-		skills: ["golang-migrate", "slog", "pgxpool", "REST APIs", "Redis", "pgx/v5", "Job Queues", "Worker Patterns", "Load Testing"],
+		skills: ["Golang", "Bun", "NextJS", "Node.js", "Express.js", "PostgreSQL", "MySQL", "SQLite", "Redis"]
 	},
 	{
 		label: "AI & agents",
