@@ -1,15 +1,13 @@
 import { ExternalLink, GitBranch } from "lucide-react";
+import { useState } from "react";
 
 import { Panel } from "@/components/layout/Panel";
 import OptionWheel from "@/components/ui/OptionWheel";
 import type { ProjectItem } from "@/content/portfolio";
-import { projectSections } from "@/content/portfolio";
+import { projects } from "@/content/portfolio";
 
 import clickSoftSoundPath from "@/assets/sounds/click-soft.mp3";
 import { cn } from "@/lib/utils";
-import { useState } from "react";
-
-const allProjects = projectSections.flatMap((section) => section.projects);
 
 function ProjectPanel({
 	project,
@@ -80,8 +78,8 @@ function ProjectPanel({
 
 export function ProjectsSection() {
 	const [activeProjectIndex, setActiveProjectIndex] = useState<number>(2);
-	const allProjectNames = allProjects.map((project) => project.name);
-	const activeProject = allProjects[activeProjectIndex];
+	const allProjectNames = projects.map((project) => project.name);
+	const activeProject = projects[activeProjectIndex];
 
 	return (
 		<Panel

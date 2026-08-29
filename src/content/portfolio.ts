@@ -172,100 +172,88 @@ export const experienceItems: ExperienceItem[] = [
 	},
 ];
 
-export const projectSections: ProjectSection[] = [
+export const projects: ProjectItem[] = [
 	{
-		title: "Full-stack & Frontend",
+		name: "Narrative Guard",
+		slug: "narrative-guard",
+		description:
+			"An AI agent that audits content against your brand guidelines before it publishes.",
+		stack: ["Next.js", "Convex", "Gemini"],
+		status: "shipped",
 		type: "fullstack",
-		projects: [
-			{
-				name: "Narrative Guard",
-				slug: "narrative-guard",
-				description:
-					"An AI agent that audits content against your brand guidelines before it publishes.",
-				stack: ["Next.js", "Convex", "Gemini"],
-				status: "shipped",
-				type: "fullstack",
-				url: "https://narrative-guard.vercel.app",
-				source: "https://github.com/PratikDev/narrative-guard",
-			},
-			{
-				name: "Roadmap App",
-				slug: "roadmap-app",
-				description:
-					"A roadmap tool people can vote on, filter, sort, and discuss.",
-				stack: ["Next.js", "Drizzle", "PostgreSQL"],
-				status: "shipped",
-				type: "fullstack",
-				url: "https://bitcode-roadmap-app.vercel.app",
-				source: "https://github.com/pratikDev/roadmap-app"
-			},
-			{
-				name: "Kar Comm",
-				slug: "kar-comm",
-				description:
-					"Dynamic landing page for an IT solutions company, built on Next.js and Firebase.",
-				stack: ["Next.js", "Firebase", "React Query"],
-				status: "shipped",
-				type: "frontend",
-				url: "https://karcommunication.com",
-			},
-		],
+		url: "https://narrative-guard.vercel.app",
+		source: "https://github.com/PratikDev/narrative-guard",
 	},
 	{
-		title: "Backend & systems",
+		name: "Roadmap App",
+		slug: "roadmap-app",
+		description:
+			"A roadmap tool people can vote on, filter, sort, and discuss.",
+		stack: ["Next.js", "Drizzle", "PostgreSQL"],
+		status: "shipped",
+		type: "fullstack",
+		url: "https://bitcode-roadmap-app.vercel.app",
+		source: "https://github.com/pratikDev/roadmap-app"
+	},
+	{
+		name: "Kar Comm",
+		slug: "kar-comm",
+		description:
+			"Dynamic landing page for an IT solutions company, built on Next.js and Firebase.",
+		stack: ["Next.js", "Firebase", "React Query"],
+		status: "shipped",
+		type: "frontend",
+		url: "https://karcommunication.com",
+	},
+	{
+		name: "Result Lookup",
+		slug: "result-lookup",
+		description:
+			"An exam result API built to serve 2 million users on a single instance with zero errors.",
+		stack: ["Go", "PostgreSQL", "Redis", "pgx/v5", "Docker"],
+		status: "shipped",
 		type: "backend",
-		projects: [
-			{
-				name: "Result Lookup",
-				slug: "result-lookup",
-				description:
-					"An exam result API built to serve 2 million users on a single instance with zero errors.",
-				stack: ["Go", "PostgreSQL", "Redis", "pgx/v5", "Docker"],
-				status: "shipped",
-				type: "backend",
-				source: "https://github.com/PratikDev/result-lookup"
-			},
-			{
-				name: "URL Health",
-				slug: "url-health",
-				description:
-					"A Go job queue that checks URL health with worker-based processing, retries, and exponential backoff.",
-				stack: ["Go", "PostgreSQL", "pgx/v5", "Docker"],
-				status: "shipped",
-				type: "backend",
-				source: "https://github.com/PratikDev/url-health-checker"
-			},
-			{
-				name: "URL Shortener",
-				slug: "url-shortener-go-rebuild",
-				description:
-					"A URL shortener rebuilt in Go with structured logging, connection pooling, and schema migrations.",
-				stack: ["Go", "PostgreSQL", "pgxpool", "Docker", "slog"],
-				status: "learning",
-				type: "backend",
-				source: "https://github.com/PratikDev/url-shortener-api"
-			},
-			{
-				name: "Tiny Compiler",
-				slug: "tiny-compiler",
-				description:
-					"A minimal compiler built from scratch in Go that tokenizes, parses, and transforms source code.",
-				stack: ["Go", "Compiler basics", "Parsing"],
-				status: "learning",
-				type: "systems",
-				source: "https://github.com/PratikDev/the-super-tiny-compiler-go"
-			},
-			{
-				name: "URL Scraper",
-				slug: "url-scraper",
-				description:
-					"A concurrent URL scraper in Go, built with goroutines and mutex locks.",
-				stack: ["Go", "Goroutines", "Mutexes", "CLI"],
-				status: "learning",
-				type: "cli",
-				source: "https://github.com/PratikDev/url-scrapper"
-			},
-		],
+		source: "https://github.com/PratikDev/result-lookup"
+	},
+	{
+		name: "URL Health",
+		slug: "url-health",
+		description:
+			"A Go job queue that checks URL health with worker-based processing, retries, and exponential backoff.",
+		stack: ["Go", "PostgreSQL", "pgx/v5", "Docker"],
+		status: "shipped",
+		type: "backend",
+		source: "https://github.com/PratikDev/url-health-checker"
+	},
+	{
+		name: "URL Shortener",
+		slug: "url-shortener-go-rebuild",
+		description:
+			"A URL shortener rebuilt in Go with structured logging, connection pooling, and schema migrations.",
+		stack: ["Go", "PostgreSQL", "pgxpool", "Docker", "slog"],
+		status: "learning",
+		type: "backend",
+		source: "https://github.com/PratikDev/url-shortener-api"
+	},
+	{
+		name: "Tiny Compiler",
+		slug: "tiny-compiler",
+		description:
+			"A minimal compiler built from scratch in Go that tokenizes, parses, and transforms source code.",
+		stack: ["Go", "Compiler basics", "Parsing"],
+		status: "learning",
+		type: "systems",
+		source: "https://github.com/PratikDev/the-super-tiny-compiler-go"
+	},
+	{
+		name: "URL Scraper",
+		slug: "url-scraper",
+		description:
+			"A concurrent URL scraper in Go, built with goroutines and mutex locks.",
+		stack: ["Go", "Goroutines", "Mutexes", "CLI"],
+		status: "learning",
+		type: "cli",
+		source: "https://github.com/PratikDev/url-scrapper"
 	},
 ];
 
