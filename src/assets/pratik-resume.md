@@ -1,4 +1,4 @@
-**PRATIK DEV**
+**PROTIK DEV**
 
 pratikdevofficial1@gmail.com  •  +880-1537220785
 
