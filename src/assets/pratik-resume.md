@@ -170,7 +170,7 @@ Software Engineer with 4+ years building production web applications end to end,
 
 **Spud**  [**Source**](https://github.com/PratikDev/spud)
 
-* Discord bot for hackathon task coordination with LLM-powered duplicate task detection and scope-drift detection via GitHub branch comparison, integrating Gemini through the Vercel AI SDK.
+* Discord bot for small team task coordination with LLM-powered duplicate task detection and scope-drift detection via GitHub branch comparison, integrating Gemini through the Vercel AI SDK.
 
 * HMAC-SHA256 webhook verification on every GitHub push, with a permission model (team lead vs. server admin) enforced in application code, and tasks auto-closed on PR merge.
 

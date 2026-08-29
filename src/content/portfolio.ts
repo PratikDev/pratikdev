@@ -236,6 +236,16 @@ export const projects: ProjectItem[] = [
 		source: "https://github.com/PratikDev/url-shortener-api"
 	},
 	{
+		name: "Spud",
+		slug: "spud",
+		description:
+			"A Discord bot for small team task coordination, with LLM-powered duplicate detection and GitHub-based scope-drift detection.",
+		stack: ["TypeScript", "Bun", "discord.js", "SQLite", "Gemini"],
+		status: "shipped",
+		type: "backend",
+		source: "https://github.com/PratikDev/spud"
+	},
+	{
 		name: "Tiny Compiler",
 		slug: "tiny-compiler",
 		description:
