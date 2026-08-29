@@ -41,7 +41,7 @@ Software Engineer with 4+ years building production web applications end to end,
 
 * Contributed to CI/CD pipeline configuration and deployment automation.
 
-* **Tech:** React, TypeScript, Mastra AI, Convex, Vercel AI SDK, CI/CD
+* **Tech:** React, TypeScript, Convex, Vercel AI SDK, Github Actions
 
 [**Osilion**](https://osilion.no/)	Oct 2025 – Feb 2026  
 ***Full-Stack Engineer***

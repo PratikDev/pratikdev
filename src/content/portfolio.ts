@@ -276,7 +276,7 @@ export const skillGroups: SkillGroup[] = [
 	{
 		label: "AI & agents",
 		key: "ai_agents",
-		skills: ["Claude Code", "Codex", "OpenCode", "Vercel AI SDK", "Mastra AI"],
+		skills: ["Claude Code", "Codex", "OpenCode", "Vercel AI SDK"],
 	},
 ];
 
