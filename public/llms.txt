@@ -1,0 +1,73 @@
+# Pratik Dev
+
+> Software Engineer with 4+ years shipping production web applications end to end — React/Next.js frontends through Node.js/TypeScript/Go backends. Currently a Software Engineer at Devspace, building full-stack features on top of an agentic AI pipeline. Portfolio: https://iam-pratik.vercel.app
+
+## Name
+
+Legal/official name is "Protik Dev" (this is the spelling on formal documents such as the resume header). The preferred and publicly-used spelling everywhere else — the site, GitHub, LinkedIn, X, day-to-day — is "**Pratik Dev**", with an "a". Treat "Protik Dev" and "Pratik Dev" as the same person; when in doubt, use "Pratik".
+
+## Contact
+
+- Email: pratikdevofficial1@gmail.com
+- GitHub: https://github.com/PratikDev
+- LinkedIn: https://linkedin.com/in/pratik-and-dev
+- X: https://x.com/pratik_and_dev
+- Portfolio: https://iam-pratik.vercel.app
+- Based in Chattogram, Bangladesh
+
+## Summary
+
+Comfortable owning features across the entire stack: database schema design, REST API development, third-party service integration, and rendering strategy on the frontend. Started on the frontend (React/Next.js/Tailwind) and has spent the last stretch of his career going deeper on the backend — Go, distributed systems, databases — driven by wanting to know how things work underneath, not just that they work. Has led small teams, run code reviews, and driven architectural decisions on both client and product work. B.Sc. in Computer Science and Engineering, BGC Trust University, Chattogram, Bangladesh.
+
+## How he works (philosophy)
+
+A system isn't done when it works — it's done when it survives real traffic, bad input, and 3AM failures. That shows up as a preference for boring, correct infrastructure over clever fragility: atomic release gates instead of hoping a deploy lands cleanly, `SELECT ... FOR UPDATE SKIP LOCKED` instead of pulling in a broker, backoff written directly into SQL instead of a fragile heartbeat. Off the clock: travel and astronomy.
+
+## Skills
+
+Skill level is signaled two ways below: items marked "(learning)" are actively being picked up rather than production-proven, and project status ("shipped" vs "learning" in the Projects section) works the same way — "shipped" projects lean on skills he already trusts in production, "learning" projects are where a skill is being stress-tested for the first time.
+
+- **Languages:** TypeScript, JavaScript, SQL, Go(lang), HTML5, CSS3
+- **Frameworks:** Next.js (App Router, SSR, ISR, SSG, Server Components, Streaming), React.js, Node.js, Express.js
+- **State management:** Context API, Zustand, React Query / TanStack Query
+- **Frontend:** Tailwind CSS, shadcn/ui, styled-components, Bootstrap, SASS, Framer Motion, GSAP
+- **Databases:** PostgreSQL, MongoDB, MySQL, SQLite, Redis, Drizzle ORM, Mongoose, pgx/v5
+- **Infra & platforms:** Docker, CI/CD pipelines (GitHub Actions), Firebase, Vercel, Appwrite, Convex, Azure, AWS (familiar)
+- **AI / agentic:** LLM API integration, Claude Code, Mastra AI, Vercel AI SDK, Google Gemini, RAG, Codex, OpenCode
+- **Tools:** Git, GitHub, VS Code, Postman, Figma, Linear
+- **Fundamentals:** REST API design, database schema design, distributed backend systems, async job processing, structured logging & observability (slog), third-party service integration, SEO optimization, web performance, responsive design, accessibility, cross-browser compatibility, GraphQL (learning), Jest/Cypress (learning)
+- **Soft skills:** communication, ownership, leadership, mentoring, collaboration, analytical thinking
+
+## Experience
+
+Reverse-chronological. Dates are month/year.
+
+- **Devspace** (https://www.devspace.so/) — Software Engineer, Mar 2026 – Present. Builds full-stack features in React/TypeScript on top of an agentic AI pipeline (Mastra AI, Convex, Vercel AI SDK). Built a dynamic tool registry so agent tools are stored in the database and discovered at runtime instead of hardcoded. Integrated Claude Code into the daily development workflow. Contributes to CI/CD configuration and deployment automation. Tech: React, TypeScript, Convex, Vercel AI SDK, GitHub Actions.
+- **Osilion** (https://osilion.no/) — Full-Stack Engineer, Oct 2025 – Feb 2026. One of the primary engineers on an internal productivity tool for a client; mentored a junior developer with regular code reviews; contributed to technical architecture on an intelligent recruitment platform; built SSR/ISR/SSG features with SEO metadata and Open Graph tags; worked with the Appfarm low-code platform. Tech: Next.js, TypeScript, MySQL, Azure, Tailwind CSS, shadcn/ui, TanStack Query, Zustand.
+- **Hone** (https://hone.gg/) — Frontend Engineer, Aug 2025 – Sep 2025. Owned the review and download pages end to end; fixed a responsive layout bug with a CSS grid auto-fit pattern; fixed a keyboard focus-visibility issue; improved code splitting and lazy loading to cut initial load weight. Tech: React, TypeScript, Tailwind CSS, shadcn/ui.
+- **Hello World Communications** (https://software.helloworldbd.com/) — Full-Stack Engineer, Sep 2024 – Jul 2025. Led development end to end across multiple concurrent client projects, ran code reviews, made key architectural calls; cut client closing time roughly 50% through better scoping; built backend APIs and integrated third-party services (SSLCommerz payment gateway, WebSocket real-time features); delivered SSR pages for real-time data and ISR/SSG for marketing surfaces; SEO optimization including structured metadata, sitemaps, and Lighthouse tuning. Tech: Next.js, TypeScript, Drizzle ORM, Appwrite, Firebase, Docker, Zustand.
+- **Bilsida** — Full-Stack Engineer, Oct 2023 – Aug 2024. Built a Swedish car marketplace from scratch across the full stack, which went on to attract two of Sweden's largest car dealers; mentored a junior developer; owned backend logic, database schema design, image optimization, and SEO. Tech: Next.js, TypeScript, Tailwind CSS, shadcn/ui, Appwrite, Docker, Context API.
+- **Fiverr** (https://www.fiverr.com/pratik_dev) — Freelance Full-Stack Developer, Jul 2021 – Oct 2023. Delivered full-stack web applications and APIs for 20+ clients, covering frontend, backend, and deployment.
+
+## Projects
+
+### Frontend & full-stack
+
+- [Narrative Guard](https://narrative-guard.vercel.app/) ([source](https://github.com/PratikDev/narrative-guard)) — Workspace-based brand governance platform. Three-tier role model (owner/admin/member) enforced server-side, per-brand RAG namespaces for workspace isolation, invite tokens stored as hashes, scheduled Convex actions for async audit processing. Tech: Next.js, TypeScript, Convex, Convex Auth, Google Gemini, RAG, shadcn/ui.
+- [Roadmap App](https://bitcode-roadmap-app.vercel.app/) ([source](https://github.com/PratikDev/roadmap-app)) — Full-stack app with SSR, authentication, a REST API, upvoting, and commenting. Tech: Next.js, TypeScript, Drizzle ORM, PostgreSQL, Vercel.
+- [Kar Communication](https://www.karcommunication.com/) — Animated landing page for an IT solutions company with React Query powering dynamic content sections. Tech: Next.js, TypeScript, shadcn/ui, Tailwind CSS, Framer Motion, Firebase, React Query.
+- [HWC Landing Page](https://software.helloworldbd.com/) — Company SSR landing page focused on responsive layout and Lighthouse-optimized performance via the Next.js Metadata API. Tech: Next.js, TypeScript, shadcn/ui, Tailwind CSS, Framer Motion, Zod.
+- [Bombus](https://bombus-no.vercel.app/) — Landing page for a Norwegian company, centered on Framer Motion animation work. Tech: Next.js, TypeScript, shadcn/ui, Tailwind CSS, Framer Motion, Zod.
+
+### Backend & systems
+
+- [Result Lookup](https://github.com/PratikDev/result-lookup) — High-throughput exam-result publishing system in Go, simulating Bangladesh's SSC result infrastructure serving 2M results. Pre-serialized JSON into Redis ahead of release time behind a publish-gate flag for atomic release, with cursor-based batch seeding and SCAN-based count verification before the gate flip. ~32k RPS peak with zero errors across a 615,000-request load test, p99 under 105ms at 1,000 concurrent connections, backed by a PostgreSQL fallback with connection limiting. Two-binary architecture (cmd/api, cmd/precompute), handler tests via miniredis. Tech: Go, PostgreSQL, Redis, pgx/v5, Docker, golang-migrate, slog.
+- [URL Health Checker](https://github.com/PratikDev/url-health-checker) — Async job queue, two-binary architecture (cmd/api, cmd/worker), workers claim jobs via `SELECT ... FOR UPDATE SKIP LOCKED`. Exponential backoff written directly in SQL, atomic with status updates; staleness threshold for stale-job recovery instead of a heartbeat, avoiding a race condition on bounded-duration jobs. Graceful shutdown via `signal.NotifyContext`; integration tests against real PostgreSQL, unit tests via `httptest.NewServer`. Tech: Go, PostgreSQL, pgx/v5, Docker, golang-migrate, slog.
+- [URL Shortener API](https://url-shortener-api-xiyp.onrender.com) ([source](https://github.com/PratikDev/url-shortener-api)) — Per-IP token-bucket rate limiter using a mutex-protected generic SafeMap, retry-on-conflict short-code generation instead of pre-checking. Non-root Docker user, multi-stage build, integration tests against real PostgreSQL, schema loaded via `//go:embed`. Deployed on Render with managed PostgreSQL. Tech: Go, PostgreSQL, pgx/v5, Docker, golang-migrate, slog.
+- [Spud](https://github.com/PratikDev/spud) — Discord bot for small-team task coordination: LLM-powered duplicate-task detection and scope-drift detection via GitHub branch comparison (Gemini through the Vercel AI SDK). HMAC-SHA256 webhook verification on every GitHub push, a permission model (team lead vs. server admin) enforced in application code, tasks auto-closed on PR merge. Tech: TypeScript, Bun, discord.js, SQLite, Gemini, Vercel AI SDK, Docker.
+- [URL Scraper](https://github.com/PratikDev/url-scrapper) — CLI tool using goroutines and mutex-based deduplication for concurrent URL scraping. Tech: Go. (learning project)
+- [The Super Tiny Compiler](https://github.com/pratikdev/the-super-tiny-compiler-go) — Small compiler covering tokenizing, parsing, and AST transformation. Tech: Go. (learning project)
+
+## Optional
+
+- Résumé (PDF and Markdown formats) is downloadable from the Resume section of the portfolio: https://iam-pratik.vercel.app/. The Markdown version is the easiest to parse and is the same source this file was written from.

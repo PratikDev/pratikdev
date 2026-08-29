@@ -57,6 +57,15 @@ export function SiteMenu() {
 			}}
 			onMenuOpen={() => setInputLocked("menu", true)}
 			onMenuClose={() => setInputLocked("menu", false)}
+			rightSideContent={
+				<a
+					href="/llms.txt"
+					target="_blank"
+					className="bg-background px-2 py-1 grid place-content-center text-muted-foreground hover:text-primary hover:underline"
+				>
+					<small>llms.txt</small>
+				</a>
+			}
 		/>
 	);
 }
