@@ -124,7 +124,7 @@ export const experienceItems: ExperienceItem[] = [
 		company: "Osilion",
 		companyKey: "osilion",
 		role: "Fullstack Engineer",
-		start: "Oct 2025",
+		start: "Jul 2025",
 		end: "Feb 2026",
 		description:
 			"Built and maintained full-stack features for an intelligent recruitment platform.",
