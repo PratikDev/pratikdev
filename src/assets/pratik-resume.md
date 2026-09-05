@@ -24,7 +24,7 @@ Software Engineer with 4+ years building production web applications end to end,
 
 **Tools:** Git, GitHub, VS Code, Postman, Figma, Linear
 
-**Fundamentals:** REST API design and integration, database schema design, distributed backend systems, async job processing, structured logging and observability, third-party service integration, LLM API integration, SEO Optimization, Web Performance, Responsive Design, Accessibility, Cross-browser Compatibility, GraphQL (learning), Jest/Cypress (learning)
+**Fundamentals:** REST API design and integration, database schema design, distributed backend systems, async job processing, structured logging and observability, third-party service integration, LLM API integration, testing with Jest, Vitest, and React Testing Library, SEO Optimization, Web Performance, Responsive Design, Accessibility, Cross-browser Compatibility, GraphQL (learning)
 
 **Soft Skills:** Communication, Ownership, Leadership, Mentoring, Collaboration, Analytical Thinking, Friendly & Approachable
 
@@ -43,7 +43,7 @@ Software Engineer with 4+ years building production web applications end to end,
 
 * **Tech:** React, TypeScript, Convex, Vercel AI SDK, Github Actions
 
-[**Osilion**](https://osilion.no/)	Oct 2025 – Feb 2026  
+[**Osilion**](https://osilion.no/)	Jul 2025 – Feb 2026  
 ***Full-Stack Engineer***
 
 * Served as one of the primary engineers on an internal productivity tool for a client, contributing to improvement in employee productivity.
@@ -108,13 +108,17 @@ Software Engineer with 4+ years building production web applications end to end,
 
 * Built the audit flow end to end: score, verdict, findings, and an AI rewrite surfaced through a responsive Next.js UI, with invite tokens stored as hashes and scheduled Convex actions handling async audit processing.
 
-* **Tech:** Next.js, TypeScript, Convex, Convex Auth, Google Gemini, RAG, shadcn/ui
+* Covered with tests using Vitest and React Testing Library.
+
+* **Tech:** Next.js, TypeScript, Convex, Convex Auth, Google Gemini, RAG, shadcn/ui, Vitest, React Testing Library
 
 **Roadmap App**  [**Live**](https://bitcode-roadmap-app.vercel.app/) | [**Source**](https://github.com/PratikDev/roadmap-app)
 
 * Full-stack app with SSR, authentication, a REST API, and upvoting and commenting features.
 
-* **Tech:** Next.js, TypeScript, Drizzle ORM, PostgreSQL, Vercel
+* Covered with tests using Jest and React Testing Library.
+
+* **Tech:** Next.js, TypeScript, Drizzle ORM, PostgreSQL, Vercel, Jest, React Testing Library
 
 **Kar Communication**  [**Live**](https://www.karcommunication.com/)
 
