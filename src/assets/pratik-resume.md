@@ -1,6 +1,6 @@
 **PROTIK DEV**
 
-pratikdevofficial1@gmail.com  •  +880-1537220785
+pratikdevofficial1@gmail.com  •  \+880-1537220785
 
 [GitHub](https://github.com/PratikDev)  •  [LinkedIn](https://linkedin.com/in/pratik-and-dev)  •  [Portfolio](https://iam-pratik.vercel.app)
 
@@ -140,6 +140,18 @@ Software Engineer with 4+ years building production web applications end to end,
 
 **BACKEND & SYSTEM PROJECTS**
 
+**Spud [Live](https://spud-bot.onrender.com/) |** [**Source**](https://github.com/PratikDev/spud)
+
+* Discord bot for small team task coordination with LLM-powered duplicate task detection and scope-drift detection via GitHub branch comparison, integrating Gemini through the Vercel AI SDK.
+
+* HMAC-SHA256 webhook verification on every GitHub push, with a permission model (team lead vs. server admin) enforced in application code, and tasks auto-closed on PR merge.
+
+* Rate limited webhook routes
+
+* Synthetic monitoring with Grafana dashboards and logging via Loki
+
+* **Tech:** TypeScript, Bun, discord.js, SQLite (Turso), Gemini, Vercel AI SDK, Docker, Grafana
+
 **Result Lookup**  [**Source**](https://github.com/PratikDev/result-lookup)
 
 * Designed and built a high-throughput exam result publishing system in Go, simulating Bangladesh's SSC result infrastructure serving 2M results.
@@ -171,14 +183,6 @@ Software Engineer with 4+ years building production web applications end to end,
 * Deployed on Render with managed PostgreSQL.
 
 * **Tech:** Go, PostgreSQL, pgx/v5, Docker, golang-migrate, slog
-
-**Spud**  [**Source**](https://github.com/PratikDev/spud)
-
-* Discord bot for small team task coordination with LLM-powered duplicate task detection and scope-drift detection via GitHub branch comparison, integrating Gemini through the Vercel AI SDK.
-
-* HMAC-SHA256 webhook verification on every GitHub push, with a permission model (team lead vs. server admin) enforced in application code, and tasks auto-closed on PR merge.
-
-* **Tech:** TypeScript, Bun, discord.js, SQLite, Gemini, Vercel AI SDK, Docker
 
 **URL Scraper**  [**Source**](https://github.com/PratikDev/url-scrapper)
 
