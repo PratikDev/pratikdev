@@ -142,19 +142,19 @@ Software Engineer with 4+ years building production web applications end to end,
 
 **Spud [Live](https://spud-bot.onrender.com/) |** [**Source**](https://github.com/PratikDev/spud)
 
-* Discord bot for small team task coordination with LLM-powered duplicate task detection and scope-drift detection via GitHub branch comparison, integrating Gemini through the Vercel AI SDK.
+* Built and deployed to production a Discord bot for small-team task coordination with **LLM features with Gemini**. Duplicate-task detection that blocks redundant work at claim time, and a **scope-drift detector** that diffs a git branch against its natural-language task description and pings the owner in-channel when the work strays outside what was claimed.
 
-* HMAC-SHA256 webhook verification on every GitHub push, with a permission model (team lead vs. server admin) enforced in application code, and tasks auto-closed on PR merge.
+* Engineered a **GitHub App integration end to end** with RS256 JWT auth, short-lived installation tokens, and an app-level **Webhook Pipeline** with HMAC-SHA256 signature verification, per-project Token-Bucket **Rate Limiting**, and automatic task closure on PR merge.
 
-* Rate limited webhook routes
+* Added **AES-256-GCM Encryption** at rest for user-supplied API keys (bring-your-own-key model), a **Role-based Permission Model** (team lead vs. server admin) enforced in application code, and a typechecked, linted, 50+ test suite.
 
-* Synthetic monitoring with Grafana dashboards and logging via Loki
+* Set up **Production Observability** \- structured JSON logging shipped to Grafana Loki, plus **Synthetic Monitoring** with uptime alerting; containerized with Docker on a hosted Turso (libSQL) database.
 
-* **Tech:** TypeScript, Bun, discord.js, SQLite (Turso), Gemini, Vercel AI SDK, Docker, Grafana
+* **Tech:** TypeScript, Bun, discord.js, GitHub Apps API, Github Actions, Gemini, Vercel AI SDK, SQLite/Turso, Grafana (Loki \+ Synthetic Monitoring), Docker
 
 **Result Lookup**  [**Source**](https://github.com/PratikDev/result-lookup)
 
-* Designed and built a high-throughput exam result publishing system in Go, simulating Bangladesh's SSC result infrastructure serving 2M results.
+* Designed and built a high-throughput exam result publishing system in Go, simulating Bangladesh's SSC result infrastructure **serving 2M results**.
 
 * Pre-serialized JSON into Redis ahead of release time behind a publish gate flag for atomic release, with cursor-based batch seeding and count verification via SCAN before the gate flip.
 
