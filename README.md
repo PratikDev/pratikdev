@@ -1,5 +1,5 @@
 <div align="center">
 
-![Stats](https://gh-widget-pratikdev.vercel.app/api/widget)
+![Stats](https://gh-widget-pratik.vercel.app/api/widget)
 
 </div>
